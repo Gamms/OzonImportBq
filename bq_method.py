@@ -98,6 +98,6 @@ def DeleteOldReport(DateImport,dataset_id,key_path,fieldname,table_id):
         job_query = bigquery_client.query(query, project=credentials.project_id)
         results=job_query.result()
     except Exception as e:
-        print(e)
+        print(e) ,k, m
     return
 
