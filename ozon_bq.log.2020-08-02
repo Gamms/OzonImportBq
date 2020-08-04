@@ -1,0 +1,48 @@
+2020-08-02 11:54:13,425 | __main__ | INFO | Начало импорта из OZON:
+2020-08-02 11:54:18,049 | bq_method | INFO | Starting uploading data. Record count 831
+2020-08-02 11:54:19,032 | __main__ | ERROR | Ошибка выполнения.404 POST https://bigquery.googleapis.com/upload/bigquery/v2/projects/polar-plate-276717/jobs?uploadType=resumable: Not found: Dataset polar-plate-276717:ozon
+Traceback (most recent call last):
+  File "C:\Users\Gamm\PycharmProjects\OzonImportBq\venv\lib\site-packages\google\cloud\bigquery\client.py", line 1760, in load_table_from_file
+    response = self._do_resumable_upload(
+  File "C:\Users\Gamm\PycharmProjects\OzonImportBq\venv\lib\site-packages\google\cloud\bigquery\client.py", line 2085, in _do_resumable_upload
+    upload, transport = self._initiate_resumable_upload(
+  File "C:\Users\Gamm\PycharmProjects\OzonImportBq\venv\lib\site-packages\google\cloud\bigquery\client.py", line 2127, in _initiate_resumable_upload
+    upload.initiate(
+  File "C:\Users\Gamm\PycharmProjects\OzonImportBq\venv\lib\site-packages\google\resumable_media\requests\upload.py", line 353, in initiate
+    self._process_initiate_response(response)
+  File "C:\Users\Gamm\PycharmProjects\OzonImportBq\venv\lib\site-packages\google\resumable_media\_upload.py", line 453, in _process_initiate_response
+    _helpers.require_status_code(
+  File "C:\Users\Gamm\PycharmProjects\OzonImportBq\venv\lib\site-packages\google\resumable_media\_helpers.py", line 91, in require_status_code
+    raise common.InvalidResponse(
+google.resumable_media.common.InvalidResponse: ('Request failed with status code', 404, 'Expected one of', <HTTPStatus.OK: 200>)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:/Users/Gamm/PycharmProjects/OzonImportBq/main.py", line 75, in main
+    bq_method.export_js_to_bq(items, method,jsonkey,datasetid,LOG_FILE)
+  File "C:\Users\Gamm\PycharmProjects\OzonImportBq\bq_method.py", line 29, in export_js_to_bq
+    job = bigquery_client.load_table_from_json(js, table_ref, job_config=job_config)
+  File "C:\Users\Gamm\PycharmProjects\OzonImportBq\venv\lib\site-packages\google\cloud\bigquery\client.py", line 2057, in load_table_from_json
+    return self.load_table_from_file(
+  File "C:\Users\Gamm\PycharmProjects\OzonImportBq\venv\lib\site-packages\google\cloud\bigquery\client.py", line 1768, in load_table_from_file
+    raise exceptions.from_http_response(exc.response)
+google.api_core.exceptions.NotFound: 404 POST https://bigquery.googleapis.com/upload/bigquery/v2/projects/polar-plate-276717/jobs?uploadType=resumable: Not found: Dataset polar-plate-276717:ozon
+2020-08-02 11:55:09,452 | __main__ | INFO | Начало импорта из OZON:
+2020-08-02 11:55:10,976 | bq_method | INFO | Starting uploading data. Record count 831
+2020-08-02 11:55:12,645 | bq_method | INFO | Starting job 26cb7825-9f51-4230-b7ca-0c967d4bdc13
+2020-08-02 11:55:12,645 | bq_method | INFO | Loading data into the BQ table price
+2020-08-02 11:55:31,829 | __main__ | INFO | Начало импорта из OZON:
+2020-08-02 11:56:29,637 | bq_method | INFO | Starting uploading data. Record count 4047
+2020-08-02 11:56:31,798 | bq_method | INFO | Starting job 3e53ae02-898e-48d4-a714-0ec0ac5d1abe
+2020-08-02 11:56:31,799 | bq_method | INFO | Loading data into the BQ table orders
+2020-08-02 11:57:53,867 | __main__ | INFO | Начало импорта из OZON:
+2020-08-02 11:57:55,281 | bq_method | INFO | Starting uploading data. Record count 831
+2020-08-02 11:57:56,835 | bq_method | INFO | Starting job 3a176cf8-8fa7-42d0-b15c-6fdc506d4ead
+2020-08-02 11:57:56,835 | bq_method | INFO | Loading data into the BQ table stock
+2020-08-02 11:58:24,689 | __main__ | INFO | Начало импорта из OZON:
+2020-08-02 11:59:00,350 | bq_method | INFO | Starting uploading data. Record count 3539
+2020-08-02 11:59:02,444 | bq_method | INFO | Starting job 7eec483b-330e-4081-b822-617bf14ef655
+2020-08-02 11:59:02,445 | bq_method | INFO | Loading data into the BQ table transaction
+2020-08-02 20:17:55,214 | __main__ | INFO | Начало импорта из OZON:
+2020-08-02 20:18:40,018 | __main__ | INFO | Начало импорта из OZON:

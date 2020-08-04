@@ -1,6 +1,10 @@
-2020-08-02 11:54:13,425 | __main__ | INFO | Начало импорта из OZON:
-2020-08-02 11:54:18,049 | bq_method | INFO | Starting uploading data. Record count 831
-2020-08-02 11:54:19,032 | __main__ | ERROR | Ошибка выполнения.404 POST https://bigquery.googleapis.com/upload/bigquery/v2/projects/polar-plate-276717/jobs?uploadType=resumable: Not found: Dataset polar-plate-276717:ozon
+2020-08-04 00:16:23,496 | __main__ | INFO | Начало импорта из OZON:
+2020-08-04 00:17:59,446 | __main__ | INFO | Начало импорта из OZON:
+2020-08-04 00:34:41,451 | __main__ | INFO | Начало импорта из OZON:
+2020-08-04 00:35:59,131 | __main__ | INFO | Начало импорта из OZON:
+2020-08-04 00:46:14,105 | __main__ | INFO | Начало импорта из OZON:
+2020-08-04 00:47:41,909 | bq_method | INFO | Starting uploading data. Record count 254
+2020-08-04 00:48:02,269 | __main__ | ERROR | Ошибка выполнения.404 POST https://bigquery.googleapis.com/upload/bigquery/v2/projects/ferrous-depth-277416/jobs?uploadType=resumable: Not found: Dataset ferrous-depth-277416:OZON
 Traceback (most recent call last):
   File "C:\Users\Gamm\PycharmProjects\OzonImportBq\venv\lib\site-packages\google\cloud\bigquery\client.py", line 1760, in load_table_from_file
     response = self._do_resumable_upload(
@@ -19,7 +23,7 @@ google.resumable_media.common.InvalidResponse: ('Request failed with status code
 During handling of the above exception, another exception occurred:
 
 Traceback (most recent call last):
-  File "C:/Users/Gamm/PycharmProjects/OzonImportBq/main.py", line 75, in main
+  File "C:/Users/Gamm/PycharmProjects/OzonImportBq/main.py", line 90, in main
     bq_method.export_js_to_bq(items, method,jsonkey,datasetid,LOG_FILE)
   File "C:\Users\Gamm\PycharmProjects\OzonImportBq\bq_method.py", line 29, in export_js_to_bq
     job = bigquery_client.load_table_from_json(js, table_ref, job_config=job_config)
@@ -27,22 +31,222 @@ Traceback (most recent call last):
     return self.load_table_from_file(
   File "C:\Users\Gamm\PycharmProjects\OzonImportBq\venv\lib\site-packages\google\cloud\bigquery\client.py", line 1768, in load_table_from_file
     raise exceptions.from_http_response(exc.response)
-google.api_core.exceptions.NotFound: 404 POST https://bigquery.googleapis.com/upload/bigquery/v2/projects/polar-plate-276717/jobs?uploadType=resumable: Not found: Dataset polar-plate-276717:ozon
-2020-08-02 11:55:09,452 | __main__ | INFO | Начало импорта из OZON:
-2020-08-02 11:55:10,976 | bq_method | INFO | Starting uploading data. Record count 831
-2020-08-02 11:55:12,645 | bq_method | INFO | Starting job 26cb7825-9f51-4230-b7ca-0c967d4bdc13
-2020-08-02 11:55:12,645 | bq_method | INFO | Loading data into the BQ table price
-2020-08-02 11:55:31,829 | __main__ | INFO | Начало импорта из OZON:
-2020-08-02 11:56:29,637 | bq_method | INFO | Starting uploading data. Record count 4047
-2020-08-02 11:56:31,798 | bq_method | INFO | Starting job 3e53ae02-898e-48d4-a714-0ec0ac5d1abe
-2020-08-02 11:56:31,799 | bq_method | INFO | Loading data into the BQ table orders
-2020-08-02 11:57:53,867 | __main__ | INFO | Начало импорта из OZON:
-2020-08-02 11:57:55,281 | bq_method | INFO | Starting uploading data. Record count 831
-2020-08-02 11:57:56,835 | bq_method | INFO | Starting job 3a176cf8-8fa7-42d0-b15c-6fdc506d4ead
-2020-08-02 11:57:56,835 | bq_method | INFO | Loading data into the BQ table stock
-2020-08-02 11:58:24,689 | __main__ | INFO | Начало импорта из OZON:
-2020-08-02 11:59:00,350 | bq_method | INFO | Starting uploading data. Record count 3539
-2020-08-02 11:59:02,444 | bq_method | INFO | Starting job 7eec483b-330e-4081-b822-617bf14ef655
-2020-08-02 11:59:02,445 | bq_method | INFO | Loading data into the BQ table transaction
-2020-08-02 20:17:55,214 | __main__ | INFO | Начало импорта из OZON:
-2020-08-02 20:18:40,018 | __main__ | INFO | Начало импорта из OZON:
+google.api_core.exceptions.NotFound: 404 POST https://bigquery.googleapis.com/upload/bigquery/v2/projects/ferrous-depth-277416/jobs?uploadType=resumable: Not found: Dataset ferrous-depth-277416:OZON
+2020-08-04 00:53:33,356 | __main__ | INFO | Начало импорта из OZON:
+2020-08-04 01:03:59,673 | __main__ | INFO | Начало импорта из OZON:
+2020-08-04 01:05:31,529 | __main__ | INFO | Начало импорта из OZON:
+2020-08-04 01:08:01,045 | __main__ | INFO | Начало импорта из OZON:
+2020-08-04 01:08:47,415 | __main__ | INFO | Начало импорта из OZON:
+2020-08-04 01:09:36,872 | __main__ | INFO | Начало импорта из OZON:
+2020-08-04 01:11:13,637 | __main__ | INFO | Начало импорта из OZON:
+2020-08-04 01:11:17,371 | bq_method | INFO | Starting uploading data. Record count 254
+2020-08-04 01:11:19,635 | bq_method | INFO | Starting job 2fb77282-e489-402b-8f6e-d578660be69b
+2020-08-04 01:11:19,636 | bq_method | INFO | Loading data into the BQ table orders
+2020-08-04 01:11:20,036 | __main__ | ERROR | Ошибка выполнения.400 Provided Schema does not match Table ferrous-depth-277416:ozon.orders. Cannot add fields (field: price)
+Traceback (most recent call last):
+  File "C:/Users/Gamm/PycharmProjects/OzonImportBq/main.py", line 89, in main
+    bq_method.export_js_to_bq(items, method,jsonkey,datasetid,LOG_FILE)
+  File "C:\Users\Gamm\PycharmProjects\OzonImportBq\bq_method.py", line 33, in export_js_to_bq
+    job.result()  # Waits for table load to complete.
+  File "C:\Users\Gamm\PycharmProjects\OzonImportBq\venv\lib\site-packages\google\cloud\bigquery\job.py", line 812, in result
+    return super(_AsyncJob, self).result(timeout=timeout)
+  File "C:\Users\Gamm\PycharmProjects\OzonImportBq\venv\lib\site-packages\google\api_core\future\polling.py", line 130, in result
+    raise self._exception
+google.api_core.exceptions.BadRequest: 400 Provided Schema does not match Table ferrous-depth-277416:ozon.orders. Cannot add fields (field: price)
+2020-08-04 01:13:34,207 | __main__ | INFO | Начало импорта из OZON:
+2020-08-04 01:13:57,397 | bq_method | INFO | Starting uploading data. Record count 254
+2020-08-04 01:13:59,804 | bq_method | INFO | Starting job add37157-ab30-477f-a8eb-7868312f0f75
+2020-08-04 01:13:59,805 | bq_method | INFO | Loading data into the BQ table orders
+2020-08-04 01:50:02,703 | __main__ | INFO | Начало импорта из OZON:
+2020-08-04 01:50:52,598 | __main__ | ERROR | Ошибка выполнения.ozon_import() missing 1 required positional argument: 'ozonid'
+Traceback (most recent call last):
+  File "C:/Users/Gamm/PycharmProjects/OzonImportBq/main.py", line 100, in main
+    items=ozon_method.ozon_import(method,apimethods.get(method), apikey,LOG_FILE,clientid,ozonid)
+TypeError: ozon_import() missing 1 required positional argument: 'ozonid'
+2020-08-04 01:51:01,779 | __main__ | INFO | Начало импорта из OZON:
+2020-08-04 01:51:07,450 | __main__ | ERROR | Ошибка выполнения.ozon_import() missing 1 required positional argument: 'ozonid'
+Traceback (most recent call last):
+  File "C:/Users/Gamm/PycharmProjects/OzonImportBq/main.py", line 100, in main
+    items=ozon_method.ozon_import(method,apimethods.get(method), apikey,LOG_FILE,clientid,ozonid)
+TypeError: ozon_import() missing 1 required positional argument: 'ozonid'
+2020-08-04 01:51:15,161 | __main__ | INFO | Начало импорта из OZON:
+2020-08-04 01:52:38,402 | __main__ | INFO | Начало импорта из OZON:
+2020-08-04 01:53:28,174 | __main__ | INFO | Начало импорта из OZON:
+2020-08-04 01:54:34,243 | __main__ | INFO | Начало импорта из OZON:
+2020-08-04 01:55:05,391 | __main__ | INFO | Начало импорта из OZON:
+2020-08-04 01:55:21,291 | __main__ | ERROR | Ошибка выполнения.ozon_import() missing 1 required positional argument: 'ozonid'
+Traceback (most recent call last):
+  File "C:/Users/Gamm/PycharmProjects/OzonImportBq/main.py", line 100, in main
+    items=ozon_method.ozon_import(method,apimethods.get(method), apikey,LOG_FILE,clientid,ozonid)
+TypeError: ozon_import() missing 1 required positional argument: 'ozonid'
+2020-08-04 01:57:21,090 | __main__ | INFO | Начало импорта из OZON:
+2020-08-04 01:57:35,101 | __main__ | ERROR | Ошибка выполнения.query() missing 1 required positional argument: 'ozonid'
+Traceback (most recent call last):
+  File "C:/Users/Gamm/PycharmProjects/OzonImportBq/main.py", line 100, in main
+    items=ozon_method.ozon_import(method,apimethods.get(method), apikey,LOG_FILE,clientid,dateimport,ozonid)
+  File "C:\Users\Gamm\PycharmProjects\OzonImportBq\ozon_method.py", line 12, in ozon_import
+    items = query(apimethods, logers, apikey, clientid,method,dateimport,ozonid)
+TypeError: query() missing 1 required positional argument: 'ozonid'
+2020-08-04 01:58:25,167 | __main__ | INFO | Начало импорта из OZON:
+2020-08-04 01:58:28,938 | __main__ | ERROR | Ошибка выполнения.makedata() missing 1 required positional argument: 'dateimport'
+Traceback (most recent call last):
+  File "C:/Users/Gamm/PycharmProjects/OzonImportBq/main.py", line 100, in main
+    items=ozon_method.ozon_import(method,apimethods.get(method), apikey,LOG_FILE,clientid,dateimport,ozonid)
+  File "C:\Users\Gamm\PycharmProjects\OzonImportBq\ozon_method.py", line 12, in ozon_import
+    items = query(apimethods, logers, apikey, clientid,method,ozonid,dateimport)
+  File "C:\Users\Gamm\PycharmProjects\OzonImportBq\ozon_method.py", line 34, in query
+    data,querycount = makedata(page, querycount,method)
+TypeError: makedata() missing 1 required positional argument: 'dateimport'
+2020-08-04 01:59:03,003 | __main__ | INFO | Начало импорта из OZON:
+2020-08-04 01:59:29,231 | bq_method | INFO | Starting uploading data. Record count 254
+2020-08-04 01:59:31,650 | bq_method | INFO | Starting job 4f8e3ea9-200c-444a-8cee-3f279c277c27
+2020-08-04 01:59:31,651 | bq_method | INFO | Loading data into the BQ table orders
+2020-08-04 02:00:21,401 | __main__ | INFO | Начало импорта из OZON:
+2020-08-04 02:00:25,216 | ozon_method | INFO | Ошибка запроса. Статус ответа:400
+2020-08-04 02:00:25,217 | __main__ | ERROR | Ошибка выполнения.'int' object has no attribute 'text'
+Traceback (most recent call last):
+  File "C:/Users/Gamm/PycharmProjects/OzonImportBq/main.py", line 100, in main
+    items=ozon_method.ozon_import(method,apimethods.get(method), apikey,LOG_FILE,clientid,dateimport,ozonid)
+  File "C:\Users\Gamm\PycharmProjects\OzonImportBq\ozon_method.py", line 12, in ozon_import
+    items = query(apimethods, logers, apikey, clientid,method,ozonid,dateimport)
+  File "C:\Users\Gamm\PycharmProjects\OzonImportBq\ozon_method.py", line 23, in query
+    js = json.loads(res.text)
+AttributeError: 'int' object has no attribute 'text'
+2020-08-04 02:01:26,300 | __main__ | INFO | Начало импорта из OZON:
+2020-08-04 02:02:32,741 | __main__ | INFO | Начало импорта из OZON:
+2020-08-04 02:03:27,448 | __main__ | INFO | Начало импорта из OZON:
+2020-08-04 02:05:25,328 | bq_method | INFO | Starting uploading data. Record count 4201
+2020-08-04 02:05:28,690 | bq_method | INFO | Starting job 8a8b5c74-61f2-49d0-8fe8-a5df3f4b2302
+2020-08-04 02:05:28,691 | bq_method | INFO | Loading data into the BQ table orders
+2020-08-04 02:07:09,921 | __main__ | INFO | Начало импорта из OZON:
+2020-08-04 02:08:21,400 | bq_method | INFO | Starting uploading data. Record count 4201
+2020-08-04 02:08:24,112 | bq_method | INFO | Starting job 49f59468-7030-4d23-aaa3-9cda3ccf833b
+2020-08-04 02:08:24,113 | bq_method | INFO | Loading data into the BQ table orders
+2020-08-04 02:11:21,269 | __main__ | INFO | Начало импорта из OZON:
+2020-08-04 02:18:55,067 | bq_method | INFO | Starting uploading data. Record count 25754
+2020-08-04 02:19:00,949 | bq_method | INFO | Starting job 8948bd69-d15c-4441-990a-ff5cb1cedd1d
+2020-08-04 02:19:00,950 | bq_method | INFO | Loading data into the BQ table orders
+2020-08-04 02:19:40,887 | __main__ | INFO | Начало импорта из OZON:
+2020-08-04 02:19:41,079 | __main__ | ERROR | Ошибка выполнения.name 'ozonid' is not defined
+Traceback (most recent call last):
+  File "C:/Users/Gamm/PycharmProjects/OzonImportBq/main.py", line 105, in main
+    items=ozon_method.ozon_import(method,apimethods.get(method), apikey,LOG_FILE,clientid,dateimport,ozonid)
+  File "C:\Users\Gamm\PycharmProjects\OzonImportBq\ozon_method.py", line 12, in ozon_import
+    items = query(apimethods, logers, apikey, clientid,method,ozonid,dateimport)
+  File "C:\Users\Gamm\PycharmProjects\OzonImportBq\ozon_method.py", line 60, in query
+    el['ozon_id'] = ozonid
+NameError: name 'ozonid' is not defined
+2020-08-04 02:20:01,785 | __main__ | INFO | Начало импорта из OZON:
+2020-08-04 02:20:01,924 | bq_method | INFO | Starting uploading data. Record count 47
+2020-08-04 02:20:03,432 | bq_method | INFO | Starting job d47d0be4-7fd1-4ada-a84b-b9a8ad081ae3
+2020-08-04 02:20:03,432 | bq_method | INFO | Loading data into the BQ table stock
+2020-08-04 02:20:29,720 | __main__ | INFO | Начало импорта из OZON:
+2020-08-04 02:20:29,907 | bq_method | INFO | Starting uploading data. Record count 47
+2020-08-04 02:20:31,547 | bq_method | INFO | Starting job 0b504c66-96cd-48a2-89a4-f06ee60dc3cb
+2020-08-04 02:20:31,547 | bq_method | INFO | Loading data into the BQ table price
+2020-08-04 02:20:31,829 | __main__ | ERROR | Ошибка выполнения.400 Provided Schema does not match Table polar-plate-276717:OZON.price. Field price.recommended_price has changed type from FLOAT to STRING
+Traceback (most recent call last):
+  File "C:/Users/Gamm/PycharmProjects/OzonImportBq/main.py", line 106, in main
+    bq_method.export_js_to_bq(items, method,jsonkey,datasetid,LOG_FILE)
+  File "C:\Users\Gamm\PycharmProjects\OzonImportBq\bq_method.py", line 33, in export_js_to_bq
+    job.result()  # Waits for table load to complete.
+  File "C:\Users\Gamm\PycharmProjects\OzonImportBq\venv\lib\site-packages\google\cloud\bigquery\job.py", line 812, in result
+    return super(_AsyncJob, self).result(timeout=timeout)
+  File "C:\Users\Gamm\PycharmProjects\OzonImportBq\venv\lib\site-packages\google\api_core\future\polling.py", line 130, in result
+    raise self._exception
+google.api_core.exceptions.BadRequest: 400 Provided Schema does not match Table polar-plate-276717:OZON.price. Field price.recommended_price has changed type from FLOAT to STRING
+2020-08-04 02:21:02,121 | __main__ | INFO | Начало импорта из OZON:
+2020-08-04 02:21:02,432 | bq_method | INFO | Starting uploading data. Record count 47
+2020-08-04 02:21:03,933 | bq_method | INFO | Starting job 72096291-85b3-4243-b42a-882180212595
+2020-08-04 02:21:03,933 | bq_method | INFO | Loading data into the BQ table price
+2020-08-04 02:21:04,956 | __main__ | ERROR | Ошибка выполнения.400 Provided Schema does not match Table polar-plate-276717:OZON.price. Field price.recommended_price has changed type from FLOAT to STRING
+Traceback (most recent call last):
+  File "C:/Users/Gamm/PycharmProjects/OzonImportBq/main.py", line 106, in main
+    bq_method.export_js_to_bq(items, method,jsonkey,datasetid,LOG_FILE)
+  File "C:\Users\Gamm\PycharmProjects\OzonImportBq\bq_method.py", line 33, in export_js_to_bq
+    job.result()  # Waits for table load to complete.
+  File "C:\Users\Gamm\PycharmProjects\OzonImportBq\venv\lib\site-packages\google\cloud\bigquery\job.py", line 812, in result
+    return super(_AsyncJob, self).result(timeout=timeout)
+  File "C:\Users\Gamm\PycharmProjects\OzonImportBq\venv\lib\site-packages\google\api_core\future\polling.py", line 130, in result
+    raise self._exception
+google.api_core.exceptions.BadRequest: 400 Provided Schema does not match Table polar-plate-276717:OZON.price. Field price.recommended_price has changed type from FLOAT to STRING
+2020-08-04 02:21:11,454 | __main__ | INFO | Начало импорта из OZON:
+2020-08-04 02:22:44,326 | __main__ | INFO | Начало импорта из OZON:
+2020-08-04 02:22:44,506 | bq_method | INFO | Starting uploading data. Record count 47
+2020-08-04 02:22:45,929 | bq_method | INFO | Starting job edfa8307-9826-47c7-ae01-453e5ae4f70b
+2020-08-04 02:22:45,929 | bq_method | INFO | Loading data into the BQ table price
+2020-08-04 02:22:46,243 | __main__ | ERROR | Ошибка выполнения.400 Provided Schema does not match Table polar-plate-276717:OZON.price. Field price.recommended_price has changed type from FLOAT to INTEGER
+Traceback (most recent call last):
+  File "C:/Users/Gamm/PycharmProjects/OzonImportBq/main.py", line 106, in main
+    bq_method.export_js_to_bq(items, method,jsonkey,datasetid,LOG_FILE)
+  File "C:\Users\Gamm\PycharmProjects\OzonImportBq\bq_method.py", line 33, in export_js_to_bq
+    job.result()  # Waits for table load to complete.
+  File "C:\Users\Gamm\PycharmProjects\OzonImportBq\venv\lib\site-packages\google\cloud\bigquery\job.py", line 812, in result
+    return super(_AsyncJob, self).result(timeout=timeout)
+  File "C:\Users\Gamm\PycharmProjects\OzonImportBq\venv\lib\site-packages\google\api_core\future\polling.py", line 130, in result
+    raise self._exception
+google.api_core.exceptions.BadRequest: 400 Provided Schema does not match Table polar-plate-276717:OZON.price. Field price.recommended_price has changed type from FLOAT to INTEGER
+2020-08-04 02:22:59,131 | __main__ | INFO | Начало импорта из OZON:
+2020-08-04 02:22:59,339 | bq_method | INFO | Starting uploading data. Record count 47
+2020-08-04 02:23:01,058 | bq_method | INFO | Starting job ced11874-94ef-42e6-92db-4baa6f0d7b15
+2020-08-04 02:23:01,058 | bq_method | INFO | Loading data into the BQ table price
+2020-08-04 02:23:12,798 | __main__ | INFO | Начало импорта из OZON:
+2020-08-04 02:23:31,213 | __main__ | INFO | Начало импорта из OZON:
+2020-08-04 02:24:04,207 | ozon_method | INFO | Ошибка запроса. Статус ответа:408
+2020-08-04 02:24:04,207 | __main__ | ERROR | Ошибка выполнения.'int' object has no attribute 'text'
+Traceback (most recent call last):
+  File "C:/Users/Gamm/PycharmProjects/OzonImportBq/main.py", line 105, in main
+    items=ozon_method.ozon_import(method,apimethods.get(method), apikey,LOG_FILE,clientid,dateimport,ozonid)
+  File "C:\Users\Gamm\PycharmProjects\OzonImportBq\ozon_method.py", line 12, in ozon_import
+    items = query(apimethods, logers, apikey, clientid,method,ozonid,dateimport)
+  File "C:\Users\Gamm\PycharmProjects\OzonImportBq\ozon_method.py", line 23, in query
+    js = json.loads(res.text)
+AttributeError: 'int' object has no attribute 'text'
+2020-08-04 02:24:41,004 | __main__ | INFO | Начало импорта из OZON:
+2020-08-04 02:25:14,333 | ozon_method | INFO | Ошибка запроса. Статус ответа:408
+2020-08-04 02:25:14,334 | __main__ | ERROR | Ошибка выполнения.'int' object has no attribute 'text'
+Traceback (most recent call last):
+  File "C:/Users/Gamm/PycharmProjects/OzonImportBq/main.py", line 105, in main
+    items=ozon_method.ozon_import(method,apimethods.get(method), apikey,LOG_FILE,clientid,dateimport,ozonid)
+  File "C:\Users\Gamm\PycharmProjects\OzonImportBq\ozon_method.py", line 12, in ozon_import
+    items = query(apimethods, logers, apikey, clientid,method,ozonid,dateimport)
+  File "C:\Users\Gamm\PycharmProjects\OzonImportBq\ozon_method.py", line 23, in query
+    js = json.loads(res.text)
+AttributeError: 'int' object has no attribute 'text'
+2020-08-04 02:27:10,306 | __main__ | INFO | Начало импорта из OZON:
+2020-08-04 02:28:10,097 | __main__ | INFO | Начало импорта из OZON:
+2020-08-04 02:39:05,531 | __main__ | ERROR | Ошибка выполнения.'price'
+Traceback (most recent call last):
+  File "C:/Users/Gamm/PycharmProjects/OzonImportBq/main.py", line 105, in main
+    items=ozon_method.ozon_import(method,apimethods.get(method), apikey,LOG_FILE,clientid,dateimport,ozonid)
+  File "C:\Users\Gamm\PycharmProjects\OzonImportBq\ozon_method.py", line 12, in ozon_import
+    items = query(apimethods, logers, apikey, clientid,method,ozonid,dateimport)
+  File "C:\Users\Gamm\PycharmProjects\OzonImportBq\ozon_method.py", line 62, in query
+    if el['price']['recommended_price']=='':
+KeyError: 'price'
+2020-08-04 02:40:03,174 | __main__ | INFO | Начало импорта из OZON:
+2020-08-04 02:43:42,210 | ozon_method | INFO | Ошибка запроса. Статус ответа:408
+2020-08-04 02:43:42,211 | __main__ | ERROR | Ошибка выполнения.'int' object has no attribute 'text'
+Traceback (most recent call last):
+  File "C:/Users/Gamm/PycharmProjects/OzonImportBq/main.py", line 105, in main
+    items=ozon_method.ozon_import(method,apimethods.get(method), apikey,LOG_FILE,clientid,dateimport,ozonid)
+  File "C:\Users\Gamm\PycharmProjects\OzonImportBq\ozon_method.py", line 12, in ozon_import
+    items = query(apimethods, logers, apikey, clientid,method,ozonid,dateimport)
+  File "C:\Users\Gamm\PycharmProjects\OzonImportBq\ozon_method.py", line 36, in query
+    js = json.loads(res.text)
+AttributeError: 'int' object has no attribute 'text'
+2020-08-04 02:47:31,825 | __main__ | INFO | Начало импорта из OZON:
+2020-08-04 02:55:20,751 | bq_method | INFO | Starting uploading data. Record count 24112
+2020-08-04 02:56:03,318 | bq_method | INFO | Starting job a46237fa-6795-483e-83aa-944b4b34bd5e
+2020-08-04 02:56:03,318 | bq_method | INFO | Loading data into the BQ table transaction
+2020-08-04 02:56:04,882 | __main__ | ERROR | Ошибка выполнения.400 Provided Schema does not match Table polar-plate-276717:OZON.transaction. Field orderAmount has changed type from INTEGER to FLOAT
+Traceback (most recent call last):
+  File "C:/Users/Gamm/PycharmProjects/OzonImportBq/main.py", line 106, in main
+    bq_method.export_js_to_bq(items, method,jsonkey,datasetid,LOG_FILE)
+  File "C:\Users\Gamm\PycharmProjects\OzonImportBq\bq_method.py", line 33, in export_js_to_bq
+    job.result()  # Waits for table load to complete.
+  File "C:\Users\Gamm\PycharmProjects\OzonImportBq\venv\lib\site-packages\google\cloud\bigquery\job.py", line 812, in result
+    return super(_AsyncJob, self).result(timeout=timeout)
+  File "C:\Users\Gamm\PycharmProjects\OzonImportBq\venv\lib\site-packages\google\api_core\future\polling.py", line 130, in result
+    raise self._exception
+google.api_core.exceptions.BadRequest: 400 Provided Schema does not match Table polar-plate-276717:OZON.transaction. Field orderAmount has changed type from INTEGER to FLOAT

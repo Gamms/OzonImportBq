@@ -6,18 +6,18 @@ import log
 from dateutil import parser
 import pytz
 timeout = 60  # таймаут 60 секунд
-def ozon_import(method,apimethods, apikey,LOG_FILE,clientid):
+def ozon_import(method,apimethods, apikey,LOG_FILE,clientid,dateimport,ozonid):
     #делаем 5 попыток с паузой 1 минута, если не вышло пропускаем
     logers = log.get_logger(__name__, LOG_FILE)
-    items = query(apimethods, logers, apikey, clientid,method)
+    items = query(apimethods, logers, apikey, clientid,method,ozonid,dateimport)
 
     return items
 
 
-def query(apiuri, logers, apikey,clientid,method):
+def query(apiuri, logers, apikey,clientid,method,ozon_id,dateimport):
     page = 1
     querycount = 500
-    data,querycount = makedata(page, querycount,method)
+    data,querycount = makedata(page, querycount,method,dateimport)
     headers = {'Api-Key': apikey, 'Client-Id': clientid}
     res = make_query('post', apiuri, data, headers, logers)
     js = json.loads(res.text)
@@ -31,7 +31,7 @@ def query(apiuri, logers, apikey,clientid,method):
     while len(items) == querycount:
         # количество записей видимо больше запросим следующую страниц
             page=page+1            #
-            data,querycount = makedata(page, querycount,method)
+            data,querycount = makedata(page, querycount,method,dateimport)
             res = make_query('post', apiuri, data, headers, logers)
             js = json.loads(res.text)
             if method=='stock' or method=='price':
@@ -40,25 +40,47 @@ def query(apiuri, logers, apikey,clientid,method):
                 items = js['result']
             #дополним последующими записями
             itemstotal = itemstotal + items
-    for el in itemstotal:
-        el['ozon_id'] = 'ip_shl'
-        el['dateExport'] = datetime.datetime.today().isoformat()
+    if method=='orders':
+        newlist = []
+        for el in itemstotal:
+            newdict={}
+            newdict['ozon_id'] = ozon_id
+            newdict['dateExport'] = datetime.datetime.today().isoformat()
+            for eldict in el:
+                if type(el[eldict]) is list:
+                    for ellist in el[eldict]: #цикл по строкам
+                        for rekellist in ellist: #цикл по реквизитам строки
+                            newdict[rekellist] = ellist[rekellist]
+                else:
+                    newdict[eldict]=el[eldict]
+            newlist.append(newdict)
+        itemstotal=newlist
+    else:
+        for el in itemstotal:
+            el['ozon_id'] = ozon_id
+            el['dateExport'] = datetime.datetime.today().isoformat()
+            if method == 'price':
+                if el['price']['recommended_price']=='':
+                    el['price']['recommended_price']=0.0
     return itemstotal
 
 
-def makedata(page, querycount,method):
-
+def makedata(page, querycount,method,dateimport):
+    dateimportstr=dateimport.strftime("%Y-%m-%dT%H:%M:%S.000Z")
+    datenowstr=datetime.datetime.now().strftime("%Y-%m-%dT%H:%M:%S.999Z")
     if method == 'stock' or method=='price':
         data = f'{{"page": {page},"page_size": {querycount}}}'
     elif method == 'transaction':
-        data =  f'{{"filter": {{"date": {{"from": "2020-01-01T00:00:00.999Z","to": "2020-12-31T23:59:59.999Z"}},'\
-        f'"transaction_type": "all"}}'\
-        f',"page": {page},"page_size": {querycount}}}'
+        #data =  f'{{"filter": {{"date": {{"from": "2020-01-01T00:00:00.999Z","to": "2020-12-31T23:59:59.999Z"}},'\
+        data = f'{{"filter": {{"date": {{"from": "{dateimportstr}","to": "{datenowstr}"}},' \
+                f'"transaction_type": "all"}}'\
+                f',"page": {page},"page_size": {querycount}}}'
     elif method == 'orders':
         querycount=50
         ofset=(page-1)*querycount
-        data =  f'{{"dir": "asc","filter": {{"since": "2020-01-01T00:00:00.999Z","to": "2020-12-31T23:59:59.999Z"}},'\
-        f'"offset": {ofset},"limit": {querycount},"with": {{"barcodes":true}}}}'
+        #data =  f'{{"dir": "asc","filter": {{"since": "2020-08-01T00:00:00.999Z","to": "2020-12-31T23:59:59.999Z"}},'\
+        data = f'{{"dir": "asc","filter": {{"since": "{dateimportstr}","to": "{datenowstr}"}},' \
+                f'"offset": {ofset},"limit": {querycount},"with": {{"barcodes":true}}}}'
 
     return data,querycount
 

@@ -85,7 +85,7 @@ def GetMaxRecord(table_id,dataset_id,key_path):
     maxdate = maxdate.replace(tzinfo=pytz.UTC)
     return maxdate
 
-def DeleteOldReport(DateImport,dataset_id,key_path,fieldname,table_id):
+def DeleteOldReport(DateImport,dataset_id,key_path,fieldname,table_id,ozonid):
     os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = key_path
     credentials = service_account.Credentials.from_service_account_file(
         key_path,
@@ -93,11 +93,12 @@ def DeleteOldReport(DateImport,dataset_id,key_path,fieldname,table_id):
     )
     fulltableid = f'{credentials.project_id}.{dataset_id}.{table_id}'
     bigquery_client = bq.Client()
+    results=0
     try:
-        query = f'Delete FROM `{fulltableid}` where {fieldname}>={DateImport.strftime("%Y-%M-%d")} and {fieldname} <{DateImport.strftime("%Y-%M-%d")}'
+        query = f'Delete FROM `{fulltableid}` where {fieldname}>="{DateImport.strftime("%Y-%m-%d")}" and ozon_id="{ozonid}"'
         job_query = bigquery_client.query(query, project=credentials.project_id)
         results=job_query.result()
     except Exception as e:
-        print(e) ,k, m
-    return
+        print(e)
+    return results
 
