@@ -43,7 +43,7 @@ import json
 )
 
 @click.option(
-    '--bufferuploadmonth', '-bufferuploadmonth',default=12,
+    '--bufferuploadmonth', '-bufferuploadmonth',default=1,
     help='Количество месяцев для загрузки'
 )
 
@@ -61,11 +61,11 @@ import json
 def main(apikey,jsonkey,method,datasetid,logdir,ozonid,bufferuploadmonth,clientid,tablebq):
     """
        Утилита коммандной строки для импорта из api OZON в Google BQ
-       Для импорта доступны 6 разделов :
+       Для импорта доступны 4 раздела :
        1. Транзакции (--method transaction)
        2. Остатки (--method stock)
        3. Заказы (--method orders)
-       4. Цены (--method sales)
+       4. Цены (--method price)
        You need a valid API key from OZON API and Client-ID for the tool to work and json Google Service Account
        """
     # add filemode="w" to overwrite
