@@ -253,3 +253,39 @@ google.api_core.exceptions.BadRequest: 400 Provided Schema does not match Table 
 2020-08-04 12:23:23,795 | __main__ | INFO | Начало импорта из OZON:
 2020-08-04 14:11:10,674 | __main__ | INFO | Начало импорта из OZON:
 2020-08-04 14:11:53,071 | ozon_method | INFO | Timeout code 408, wait 5 sec:https://api-seller.ozon.ru/v2/finance/transaction/list
+2020-08-04 14:20:51,329 | bq_method | INFO | Starting uploading data. Record count 24112
+2020-08-04 14:20:55,725 | bq_method | INFO | Starting job e63b4faf-8a37-4d52-bee5-74a08321a7cb
+2020-08-04 14:20:55,725 | bq_method | INFO | Loading data into the BQ table transaction
+2020-08-04 14:20:59,651 | __main__ | ERROR | Ошибка выполнения.400 Provided Schema does not match Table polar-plate-276717:OZON.transaction. Field orderAmount has changed type from INTEGER to FLOAT
+Traceback (most recent call last):
+  File "C:/Users/mryzhov/PycharmProjects/OzonImportBq/main.py", line 106, in main
+    bq_method.export_js_to_bq(items, method,jsonkey,datasetid,LOG_FILE)
+  File "C:\Users\mryzhov\PycharmProjects\OzonImportBq\bq_method.py", line 33, in export_js_to_bq
+    job.result()  # Waits for table load to complete.
+  File "C:\Users\mryzhov\PycharmProjects\OzonImportBq\venv\lib\site-packages\google\cloud\bigquery\job.py", line 812, in result
+    return super(_AsyncJob, self).result(timeout=timeout)
+  File "C:\Users\mryzhov\PycharmProjects\OzonImportBq\venv\lib\site-packages\google\api_core\future\polling.py", line 130, in result
+    raise self._exception
+google.api_core.exceptions.BadRequest: 400 Provided Schema does not match Table polar-plate-276717:OZON.transaction. Field orderAmount has changed type from INTEGER to FLOAT
+2020-08-04 14:22:50,975 | __main__ | INFO | Начало импорта из OZON:
+2020-08-04 14:28:32,179 | bq_method | INFO | Starting uploading data. Record count 24112
+2020-08-04 14:28:36,117 | bq_method | INFO | Starting job 8d83d9f2-4579-4aec-8579-6c2103952d25
+2020-08-04 14:28:36,117 | bq_method | INFO | Loading data into the BQ table transaction
+2020-08-04 14:28:37,067 | __main__ | ERROR | Ошибка выполнения.400 Provided Schema does not match Table polar-plate-276717:OZON.transaction. Field orderAmount has changed type from INTEGER to FLOAT
+Traceback (most recent call last):
+  File "C:/Users/mryzhov/PycharmProjects/OzonImportBq/main.py", line 106, in main
+    bq_method.export_js_to_bq(items, method,jsonkey,datasetid,LOG_FILE)
+  File "C:\Users\mryzhov\PycharmProjects\OzonImportBq\bq_method.py", line 33, in export_js_to_bq
+    job.result()  # Waits for table load to complete.
+  File "C:\Users\mryzhov\PycharmProjects\OzonImportBq\venv\lib\site-packages\google\cloud\bigquery\job.py", line 812, in result
+    return super(_AsyncJob, self).result(timeout=timeout)
+  File "C:\Users\mryzhov\PycharmProjects\OzonImportBq\venv\lib\site-packages\google\api_core\future\polling.py", line 130, in result
+    raise self._exception
+google.api_core.exceptions.BadRequest: 400 Provided Schema does not match Table polar-plate-276717:OZON.transaction. Field orderAmount has changed type from INTEGER to FLOAT
+2020-08-04 14:38:10,478 | __main__ | INFO | Начало импорта из OZON:
+2020-08-04 16:11:55,277 | __main__ | INFO | Начало импорта из OZON:
+2020-08-04 16:19:00,903 | ozon_method | INFO | Timeout code 408, wait 5 sec:https://api-seller.ozon.ru/v2/finance/transaction/list
+2020-08-04 16:50:14,581 | ozon_method | INFO | Timeout code 408, wait 5 sec:https://api-seller.ozon.ru/v2/finance/transaction/list
+2020-08-04 16:59:17,116 | bq_method | INFO | Starting uploading data. Record count 24113
+2020-08-04 16:59:21,470 | bq_method | INFO | Starting job 2e21da7a-986d-46c7-8f43-c90da3c6b655
+2020-08-04 16:59:21,470 | bq_method | INFO | Loading data into the BQ table transaction
