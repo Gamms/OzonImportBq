@@ -64,7 +64,7 @@ def DeleteTable(table_id,dataset_id,key_path):
     dataset = bigquery_client.delete_table(fulltableid)  # Make an API request.
     print(f"Delete table {fulltableid}")
 
-def GetMaxRecord(table_id,dataset_id,key_path):
+def GetMaxRecord(table_id,dataset_id,key_path,fieldname,ozonid):
     os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = key_path
     credentials = service_account.Credentials.from_service_account_file(
         key_path,
@@ -73,7 +73,7 @@ def GetMaxRecord(table_id,dataset_id,key_path):
     fulltableid = f'{credentials.project_id}.{dataset_id}.{table_id}'
     bigquery_client = bq.Client()
     try:
-        query = f'SELECT Max(lastChangeDate) as MaxlastChangeDate  FROM `{fulltableid}`'
+        query = f'SELECT Max({fieldname}) as Max{fieldname}  FROM `{fulltableid}` where ozon_id={ozonid}'
         job_query = bigquery_client.query(query, project=credentials.project_id)
         results=job_query.result()
         maxdate=datetime.date(1,1,1)

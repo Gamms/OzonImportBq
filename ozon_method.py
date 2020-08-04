@@ -16,7 +16,7 @@ def ozon_import(method,apimethods, apikey,LOG_FILE,clientid,dateimport,ozonid):
 
 def query(apiuri, logers, apikey,clientid,method,ozon_id,dateimport):
     page = 1
-    querycount = 500
+    querycount = 1000
     data,querycount = makedata(page, querycount,method,dateimport)
     headers = {'Api-Key': apikey, 'Client-Id': clientid}
     res = make_query('post', apiuri, data, headers, logers)
@@ -97,6 +97,10 @@ def make_query(method,uri,data,headers,logers):
         if res.status_code == 429:
             logers.info(f"Too many requests, wait 60 sec:{uri}")
             time.sleep(timeout)
+        if res.status_code == 408:
+            logers.info(f"Timeout code 408, wait 5 sec:{uri}")
+            time.sleep(5)
+
         elif res.status_code != 200:
             logers.info(f"Ошибка запроса. Статус ответа:{res.status_code}")
             break

@@ -250,3 +250,6 @@ Traceback (most recent call last):
   File "C:\Users\Gamm\PycharmProjects\OzonImportBq\venv\lib\site-packages\google\api_core\future\polling.py", line 130, in result
     raise self._exception
 google.api_core.exceptions.BadRequest: 400 Provided Schema does not match Table polar-plate-276717:OZON.transaction. Field orderAmount has changed type from INTEGER to FLOAT
+2020-08-04 12:23:23,795 | __main__ | INFO | Начало импорта из OZON:
+2020-08-04 14:11:10,674 | __main__ | INFO | Начало импорта из OZON:
+2020-08-04 14:11:53,071 | ozon_method | INFO | Timeout code 408, wait 5 sec:https://api-seller.ozon.ru/v2/finance/transaction/list
