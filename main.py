@@ -1,14 +1,14 @@
-import click
-import logging
 import datetime
+import click
 import dateutils
+
 # мои модули
 import bq_method
-import ozon_method
 import log
-import requests
-import json
-        #return 'Job finished.\n'
+import ozon_method
+
+
+#return 'Job finished.\n'
 
         #for el in js:
         #    print(el)
@@ -51,14 +51,8 @@ import json
     '--logdir','-logdir',
     help='log directory',default=""
 )
-@click.option(
-    '--tablebq','-tablebq',
-    help='name table in BQ dataset',default=""
-)
-
 #@click.option('--delimiter', default=";", help='Delimiter csv.', show_default=True)
-
-def main(apikey,jsonkey,method,datasetid,logdir,ozonid,bufferuploadmonth,clientid,tablebq):
+def main(apikey,jsonkey,method,datasetid,logdir,ozonid,bufferuploadmonth,clientid):
     """
        Утилита коммандной строки для импорта из api OZON в Google BQ
        Для импорта доступны 4 раздела :
@@ -72,16 +66,14 @@ def main(apikey,jsonkey,method,datasetid,logdir,ozonid,bufferuploadmonth,clienti
     #bq_method.DeleteTable('sales',datasetid,jsonkey)    bq_method.DeleteTable('invoice', datasetid, jsonkey)    bq_method.DeleteTable('orders', datasetid, jsonkey)
     #bq_method.DeleteTable('stock', datasetid, jsonkey)
     #return
-    LOG_FILE=logdir+"ozon_bq.log"
+    LOG_FILE=f'{logdir}{method}_wb_bq.log'
     loger=log.get_logger(__name__,LOG_FILE)
     #logging.basicConfig(filename=logdir+"wb_bq.log", level=logging.INFO, format='%(process)d|%(levelname)s|%(asctime)s|%(message)s')
-    loger.info(f'Начало импорта из OZON {ozonid}:')
+    loger.info('Начало импорта из OZON:')
     #keyb64: str = 'YjAxOTkxOTMtZThjMC00NTM3LTk1M2EtMzM1OTFlOGM3NzQ3'
     apimethods = {'transaction': 'https://api-seller.ozon.ru/v2/finance/transaction/list',
-                  'transactionv3': 'https://api-seller.ozon.ru/v3/finance/transaction/list',
                   'stock': 'https://api-seller.ozon.ru/v1/product/info/stocks',
                   'orders': 'https://api-seller.ozon.ru/v2/posting/fbs/list',
-                  'fbo_orders': 'https://api-seller.ozon.ru/v2/posting/fbo/list',
                   'price': 'https://api-seller.ozon.ru/v1/product/info/prices'}
     #datenow = datetime.datetime.now()
     #two_day = datetime.timedelta(2)  # два дня
@@ -93,29 +85,27 @@ def main(apikey,jsonkey,method,datasetid,logdir,ozonid,bufferuploadmonth,clienti
     #method = 'sales'
 
     dateimport = datetime.date.today() - dateutils.relativedelta(months=bufferuploadmonth)
-    if tablebq=="":
-        tablebq=method
-    loger.info(f'Чистим  данные в {tablebq} c {dateimport}')
-
-    if method == 'orders' or method == 'fbo_orders' :
+    if method == 'orders':
         fieldname = 'created_at'
-        deleteresult=bq_method.DeleteOldReport(dateimport, datasetid, jsonkey, fieldname, tablebq,ozonid)
+        deleteresult=bq_method.DeleteOldReport(dateimport, datasetid, jsonkey, fieldname, method,ozonid)
         #bq_method.DeleteTable(method, datasetid, jsonkey)
     elif method == 'transaction':
         fieldname = 'tranDate'
-        deleteresult=bq_method.DeleteOldReport(dateimport, datasetid, jsonkey, fieldname, tablebq,ozonid)
+        deleteresult=bq_method.DeleteOldReport(dateimport, datasetid, jsonkey, fieldname, method,ozonid)
 
 
 
 
     #dateimport = datetime.date.today() - datetime.timedelta(days=30)  # общий буфер 30 дней
-    loger.info(f'Загружаем данные с:{dateimport}')
+
     try:
     #   js=ozon_method.ozon_import(apimethods.get(method),apikey,LOG_FILE,dateimport,maxdatechange)
         #clientid='44346'
         items=ozon_method.ozon_import(method,apimethods.get(method), apikey,LOG_FILE,clientid,dateimport,ozonid)
-        bq_method.export_js_to_bq(items, tablebq,jsonkey,datasetid,LOG_FILE)
+        bq_method.export_js_to_bq(items, method,jsonkey,datasetid,LOG_FILE)
     except Exception as e:
         loger.exception("Ошибка выполнения."+e.__str__())
+
+
 if __name__ == "__main__":
     main()

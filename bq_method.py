@@ -78,7 +78,7 @@ def GetMaxRecord(table_id,dataset_id,key_path,fieldname,ozonid):
         results=job_query.result()
         maxdate=datetime.date(1,1,1)
         for row in results:
-            maxdate=row.MaxlastChangeDate
+            maxdate=row['Max'+fieldname]
             break
     except Exception as e:
         maxdate = datetime.datetime(1, 1, 1)
