@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+  <configuration default="false" name="main  polar transaction ip_kuz" type="PythonConfigurationType" factoryName="Python">
     <module name="OzonImportBq" />
     <option name="INTERPRETER_OPTIONS" value="" />
     <option name="PARENT_ENVS" value="true" />
@@ -12,7 +12,7 @@
     <option name="ADD_CONTENT_ROOTS" value="true" />
     <option name="ADD_SOURCE_ROOTS" value="true" />
     <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
-    <option name="PARAMETERS" value="--apikey 2feb497c-584c-4a33-a99f-1f966deabcdb --jsonkey C:\work\Freelance\bq\q.json --datasetid ozon --method orders -ozonid ip_shl" />
+    <option name="PARAMETERS" value="--apikey d8e4d7b5-296e-48b1-8b82-c6d031a59d70 --jsonkey polar.json --datasetid OZON --method transaction -ozonid ip_kuz -clientid 17198 -tablebq trans2021" />
     <option name="SHOW_COMMAND_LINE" value="false" />
     <option name="EMULATE_TERMINAL" value="false" />
     <option name="MODULE_MODE" value="false" />

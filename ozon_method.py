@@ -62,10 +62,10 @@ def query(apiuri, logers, apikey,clientid,method,ozon_id,dateimport):
             if method == 'price':
                 if el['price']['recommended_price']=='':
                     el['price']['recommended_price']=0.0
-            if method == 'transaction':
-                if type(el['orderAmount']) is float:
-                    print(el['orderAmount'])
-                    el['orderAmount']=int(el['orderAmount'])
+            #if method == 'transaction':
+                #if type(el['order_amount']) is float:
+                #    print(el['orderAmount'])
+                #    el['orderAmount']=int(el['orderAmount'])
 
 
     return itemstotal

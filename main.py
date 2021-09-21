@@ -51,9 +51,14 @@ import json
     '--logdir','-logdir',
     help='log directory',default=""
 )
+@click.option(
+    '--tablebq','-tablebq',
+    help='name table in BQ dataset',default=""
+)
+
 #@click.option('--delimiter', default=";", help='Delimiter csv.', show_default=True)
 
-def main(apikey,jsonkey,method,datasetid,logdir,ozonid,bufferuploadmonth,clientid):
+def main(apikey,jsonkey,method,datasetid,logdir,ozonid,bufferuploadmonth,clientid,tablebq):
     """
        Утилита коммандной строки для импорта из api OZON в Google BQ
        Для импорта доступны 6 разделов :
@@ -86,13 +91,16 @@ def main(apikey,jsonkey,method,datasetid,logdir,ozonid,bufferuploadmonth,clienti
     #method = 'sales'
 
     dateimport = datetime.date.today() - dateutils.relativedelta(months=bufferuploadmonth)
+    if tablebq=="":
+        tablebq=method
+
     if method == 'orders':
         fieldname = 'created_at'
-        deleteresult=bq_method.DeleteOldReport(dateimport, datasetid, jsonkey, fieldname, method,ozonid)
+        deleteresult=bq_method.DeleteOldReport(dateimport, datasetid, jsonkey, fieldname, tablebq,ozonid)
         #bq_method.DeleteTable(method, datasetid, jsonkey)
     elif method == 'transaction':
         fieldname = 'tranDate'
-        deleteresult=bq_method.DeleteOldReport(dateimport, datasetid, jsonkey, fieldname, method,ozonid)
+        deleteresult=bq_method.DeleteOldReport(dateimport, datasetid, jsonkey, fieldname, tablebq,ozonid)
 
 
 
@@ -103,7 +111,7 @@ def main(apikey,jsonkey,method,datasetid,logdir,ozonid,bufferuploadmonth,clienti
     #   js=ozon_method.ozon_import(apimethods.get(method),apikey,LOG_FILE,dateimport,maxdatechange)
         #clientid='44346'
         items=ozon_method.ozon_import(method,apimethods.get(method), apikey,LOG_FILE,clientid,dateimport,ozonid)
-        bq_method.export_js_to_bq(items, method,jsonkey,datasetid,LOG_FILE)
+        bq_method.export_js_to_bq(items, tablebq,jsonkey,datasetid,LOG_FILE)
     except Exception as e:
         loger.exception("Ошибка выполнения."+e.__str__())
 if __name__ == "__main__":

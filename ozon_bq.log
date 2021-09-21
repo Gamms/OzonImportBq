@@ -289,3 +289,130 @@ google.api_core.exceptions.BadRequest: 400 Provided Schema does not match Table 
 2020-08-04 16:59:17,116 | bq_method | INFO | Starting uploading data. Record count 24113
 2020-08-04 16:59:21,470 | bq_method | INFO | Starting job 2e21da7a-986d-46c7-8f43-c90da3c6b655
 2020-08-04 16:59:21,470 | bq_method | INFO | Loading data into the BQ table transaction
+2021-09-21 15:29:48,995 | __main__ | INFO | Начало импорта из OZON:
+2021-09-21 15:30:39,180 | __main__ | INFO | Начало импорта из OZON:
+2021-09-21 15:30:40,303 | ozon_method | INFO | Ошибка запроса. Статус ответа:401
+2021-09-21 15:30:40,303 | __main__ | ERROR | Ошибка выполнения.'int' object has no attribute 'text'
+Traceback (most recent call last):
+  File "C:\Users\mryzhov\PycharmProjects\OzonImportBq\main.py", line 105, in main
+    items=ozon_method.ozon_import(method,apimethods.get(method), apikey,LOG_FILE,clientid,dateimport,ozonid)
+  File "C:\Users\mryzhov\PycharmProjects\OzonImportBq\ozon_method.py", line 12, in ozon_import
+    items = query(apimethods, logers, apikey, clientid,method,ozonid,dateimport)
+  File "C:\Users\mryzhov\PycharmProjects\OzonImportBq\ozon_method.py", line 23, in query
+    js = json.loads(res.text)
+AttributeError: 'int' object has no attribute 'text'
+2021-09-21 15:31:23,966 | __main__ | INFO | Начало импорта из OZON:
+2021-09-21 15:31:25,148 | ozon_method | INFO | Ошибка запроса. Статус ответа:401
+2021-09-21 15:31:25,149 | __main__ | ERROR | Ошибка выполнения.'int' object has no attribute 'text'
+Traceback (most recent call last):
+  File "C:\Users\mryzhov\PycharmProjects\OzonImportBq\main.py", line 105, in main
+    items=ozon_method.ozon_import(method,apimethods.get(method), apikey,LOG_FILE,clientid,dateimport,ozonid)
+  File "C:\Users\mryzhov\PycharmProjects\OzonImportBq\ozon_method.py", line 12, in ozon_import
+    items = query(apimethods, logers, apikey, clientid,method,ozonid,dateimport)
+  File "C:\Users\mryzhov\PycharmProjects\OzonImportBq\ozon_method.py", line 23, in query
+    js = json.loads(res.text)
+AttributeError: 'int' object has no attribute 'text'
+2021-09-21 15:31:37,291 | __main__ | INFO | Начало импорта из OZON:
+2021-09-21 15:31:38,514 | ozon_method | INFO | Ошибка запроса. Статус ответа:401
+2021-09-21 15:32:27,793 | __main__ | ERROR | Ошибка выполнения.'int' object has no attribute 'text'
+Traceback (most recent call last):
+  File "C:/Users/mryzhov/PycharmProjects/OzonImportBq/main.py", line 105, in main
+    items=ozon_method.ozon_import(method,apimethods.get(method), apikey,LOG_FILE,clientid,dateimport,ozonid)
+  File "C:\Users\mryzhov\PycharmProjects\OzonImportBq\ozon_method.py", line 12, in ozon_import
+    items = query(apimethods, logers, apikey, clientid,method,ozonid,dateimport)
+  File "C:\Users\mryzhov\PycharmProjects\OzonImportBq\ozon_method.py", line 23, in query
+    js = json.loads(res.text)
+AttributeError: 'int' object has no attribute 'text'
+2021-09-21 15:32:33,531 | __main__ | INFO | Начало импорта из OZON:
+2021-09-21 15:32:34,904 | ozon_method | INFO | Ошибка запроса. Статус ответа:401
+2021-09-21 15:32:34,905 | __main__ | ERROR | Ошибка выполнения.'int' object has no attribute 'text'
+Traceback (most recent call last):
+  File "C:\Users\mryzhov\PycharmProjects\OzonImportBq\main.py", line 105, in main
+    items=ozon_method.ozon_import(method,apimethods.get(method), apikey,LOG_FILE,clientid,dateimport,ozonid)
+  File "C:\Users\mryzhov\PycharmProjects\OzonImportBq\ozon_method.py", line 12, in ozon_import
+    items = query(apimethods, logers, apikey, clientid,method,ozonid,dateimport)
+  File "C:\Users\mryzhov\PycharmProjects\OzonImportBq\ozon_method.py", line 23, in query
+    js = json.loads(res.text)
+AttributeError: 'int' object has no attribute 'text'
+2021-09-21 15:32:43,104 | __main__ | INFO | Начало импорта из OZON:
+2021-09-21 15:36:36,677 | __main__ | INFO | Начало импорта из OZON:
+2021-09-21 15:36:41,868 | ozon_method | INFO | Ошибка запроса. Статус ответа:403
+2021-09-21 15:37:05,368 | __main__ | ERROR | Ошибка выполнения.'int' object has no attribute 'text'
+Traceback (most recent call last):
+  File "C:/Users/mryzhov/PycharmProjects/OzonImportBq/main.py", line 105, in main
+    items=ozon_method.ozon_import(method,apimethods.get(method), apikey,LOG_FILE,clientid,dateimport,ozonid)
+  File "C:\Users\mryzhov\PycharmProjects\OzonImportBq\ozon_method.py", line 12, in ozon_import
+    items = query(apimethods, logers, apikey, clientid,method,ozonid,dateimport)
+  File "C:\Users\mryzhov\PycharmProjects\OzonImportBq\ozon_method.py", line 23, in query
+    js = json.loads(res.text)
+AttributeError: 'int' object has no attribute 'text'
+2021-09-21 15:37:20,219 | __main__ | INFO | Начало импорта из OZON:
+2021-09-21 15:39:31,153 | __main__ | INFO | Начало импорта из OZON:
+2021-09-21 15:46:25,566 | ozon_method | INFO | Ошибка запроса. Статус ответа:504
+2021-09-21 15:46:48,052 | __main__ | ERROR | Ошибка выполнения.'int' object has no attribute 'text'
+Traceback (most recent call last):
+  File "C:/Users/mryzhov/PycharmProjects/OzonImportBq/main.py", line 105, in main
+    items=ozon_method.ozon_import(method,apimethods.get(method), apikey,LOG_FILE,clientid,dateimport,ozonid)
+  File "C:\Users\mryzhov\PycharmProjects\OzonImportBq\ozon_method.py", line 12, in ozon_import
+    items = query(apimethods, logers, apikey, clientid,method,ozonid,dateimport)
+  File "C:\Users\mryzhov\PycharmProjects\OzonImportBq\ozon_method.py", line 23, in query
+    js = json.loads(res.text)
+AttributeError: 'int' object has no attribute 'text'
+2021-09-21 15:49:55,253 | __main__ | INFO | Начало импорта из OZON:
+2021-09-21 16:00:31,690 | __main__ | ERROR | Ошибка выполнения.'orderAmount'
+Traceback (most recent call last):
+  File "C:/Users/mryzhov/PycharmProjects/OzonImportBq/main.py", line 105, in main
+    items=ozon_method.ozon_import(method,apimethods.get(method), apikey,LOG_FILE,clientid,dateimport,ozonid)
+  File "C:\Users\mryzhov\PycharmProjects\OzonImportBq\ozon_method.py", line 12, in ozon_import
+    items = query(apimethods, logers, apikey, clientid,method,ozonid,dateimport)
+  File "C:\Users\mryzhov\PycharmProjects\OzonImportBq\ozon_method.py", line 66, in query
+    if type(el['orderAmount']) is float:
+KeyError: 'orderAmount'
+2021-09-21 16:06:14,030 | __main__ | INFO | Начало импорта из OZON:
+2021-09-21 16:12:17,700 | bq_method | INFO | Starting uploading data. Record count 11140
+2021-09-21 16:12:21,400 | bq_method | INFO | Starting job 299a369f-5bd2-4e99-ac93-912442aff47c
+2021-09-21 16:12:21,401 | bq_method | INFO | Loading data into the BQ table transaction
+2021-09-21 16:12:23,473 | __main__ | ERROR | Ошибка выполнения.400 Provided Schema does not match Table polar-plate-276717:OZON.transaction. Cannot add fields (field: item_return_amount)
+Traceback (most recent call last):
+  File "C:/Users/mryzhov/PycharmProjects/OzonImportBq/main.py", line 106, in main
+    bq_method.export_js_to_bq(items, method,jsonkey,datasetid,LOG_FILE)
+  File "C:\Users\mryzhov\PycharmProjects\OzonImportBq\bq_method.py", line 33, in export_js_to_bq
+    job.result()  # Waits for table load to complete.
+  File "C:\Users\mryzhov\PycharmProjects\OzonImportBq\venv\lib\site-packages\google\cloud\bigquery\job.py", line 812, in result
+    return super(_AsyncJob, self).result(timeout=timeout)
+  File "C:\Users\mryzhov\PycharmProjects\OzonImportBq\venv\lib\site-packages\google\api_core\future\polling.py", line 130, in result
+    raise self._exception
+google.api_core.exceptions.BadRequest: 400 Provided Schema does not match Table polar-plate-276717:OZON.transaction. Cannot add fields (field: item_return_amount)
+2021-09-21 16:31:59,798 | __main__ | INFO | Начало импорта из OZON:
+2021-09-21 16:35:31,508 | bq_method | INFO | Starting uploading data. Record count 11140
+2021-09-21 16:35:34,109 | bq_method | INFO | Starting job 182c9fde-e70c-4103-b3c2-b0f82ef0d4bc
+2021-09-21 16:35:34,109 | bq_method | INFO | Loading data into the BQ table trans2021
+2021-09-21 16:42:30,428 | __main__ | INFO | Начало импорта из OZON:
+2021-09-21 16:42:32,174 | bq_method | INFO | Starting uploading data. Record count 18
+2021-09-21 16:42:33,339 | bq_method | INFO | Starting job f66c4907-c304-4ffc-b03e-062ed245f3fd
+2021-09-21 16:42:33,340 | bq_method | INFO | Loading data into the BQ table trans2021
+2021-09-21 16:45:37,769 | __main__ | INFO | Начало импорта из OZON:
+2021-09-21 16:47:57,850 | bq_method | INFO | Starting uploading data. Record count 8314
+2021-09-21 16:48:00,190 | bq_method | INFO | Starting job 8b688e77-54a8-420b-abc7-8880d80a9859
+2021-09-21 16:48:00,190 | bq_method | INFO | Loading data into the BQ table trans2021
+2021-09-21 17:18:33,184 | __main__ | INFO | Начало импорта из OZON:
+2021-09-21 17:18:33,193 | __main__ | ERROR | Ошибка выполнения.local variable 'data' referenced before assignment
+Traceback (most recent call last):
+  File "C:\Users\mryzhov\PycharmProjects\OzonImportBq\main.py", line 113, in main
+    items=ozon_method.ozon_import(method,apimethods.get(method), apikey,LOG_FILE,clientid,dateimport,ozonid)
+  File "C:\Users\mryzhov\PycharmProjects\OzonImportBq\ozon_method.py", line 12, in ozon_import
+    items = query(apimethods, logers, apikey, clientid,method,ozonid,dateimport)
+  File "C:\Users\mryzhov\PycharmProjects\OzonImportBq\ozon_method.py", line 20, in query
+    data,querycount = makedata(page, querycount,method,dateimport)
+  File "C:\Users\mryzhov\PycharmProjects\OzonImportBq\ozon_method.py", line 91, in makedata
+    return data,querycount
+UnboundLocalError: local variable 'data' referenced before assignment
+2021-09-21 17:19:29,099 | __main__ | INFO | Начало импорта из OZON:
+2021-09-21 17:21:22,596 | bq_method | INFO | Starting uploading data. Record count 5389
+2021-09-21 17:21:24,677 | bq_method | INFO | Starting job bccb3a8b-9ab3-4e68-ac4b-fba2a3f1ae88
+2021-09-21 17:21:24,677 | bq_method | INFO | Loading data into the BQ table order2021
+2021-09-21 17:23:13,589 | __main__ | INFO | Начало импорта из OZON:
+2021-09-21 17:23:14,689 | bq_method | INFO | Starting uploading data. Record count 39
+2021-09-21 17:23:16,071 | bq_method | INFO | Starting job e63938e6-ed9a-47d8-b7b5-5b4db9523afd
+2021-09-21 17:23:16,072 | bq_method | INFO | Loading data into the BQ table orders2021
+2021-09-21 17:23:33,212 | __main__ | INFO | Начало импорта из OZON:
