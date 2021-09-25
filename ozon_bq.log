@@ -8,3 +8,181 @@
 2021-09-25 10:15:34,231 | bq_method | INFO | Starting uploading data. Record count 5389
 2021-09-25 10:15:36,239 | bq_method | INFO | Starting job 2950dfd5-3025-4958-8a87-c316f6e2473f
 2021-09-25 10:15:36,240 | bq_method | INFO | Loading data into the BQ table orders2021
+2021-09-25 10:25:04,223 | __main__ | INFO | Начало импорта из OZON:
+2021-09-25 10:25:04,224 | __main__ | INFO | Чистим  данные в orders2021 c 2020-09-25
+2021-09-25 10:25:07,041 | __main__ | INFO | Загружаем данные с:2020-09-25
+2021-09-25 10:25:07,884 | bq_method | INFO | Starting uploading data. Record count 54
+2021-09-25 10:25:09,125 | bq_method | INFO | Starting job 1e32bd84-d3ee-491f-b2d2-be7548e908e6
+2021-09-25 10:25:09,126 | bq_method | INFO | Loading data into the BQ table orders2021
+2021-09-25 10:26:20,490 | __main__ | INFO | Начало импорта из OZON ip_bog:
+2021-09-25 10:26:20,491 | __main__ | INFO | Чистим  данные в orders2021 c 2020-09-25
+2021-09-25 10:26:23,109 | __main__ | INFO | Загружаем данные с:2020-09-25
+2021-09-25 10:28:30,863 | bq_method | INFO | Starting uploading data. Record count 9041
+2021-09-25 10:28:33,396 | bq_method | INFO | Starting job 8608ea15-f3aa-490e-ab6d-bc1019572b4d
+2021-09-25 10:28:33,397 | bq_method | INFO | Loading data into the BQ table orders2021
+2021-09-25 10:50:38,655 | __main__ | INFO | Начало импорта из OZON ip_bog:
+2021-09-25 10:50:38,656 | __main__ | INFO | Чистим  данные в transv32021 c 2020-09-25
+2021-09-25 10:50:38,656 | __main__ | INFO | Загружаем данные с:2020-09-25
+2021-09-25 10:50:38,663 | __main__ | ERROR | Ошибка выполнения.local variable 'data' referenced before assignment
+Traceback (most recent call last):
+  File "C:\Users\mryzhov\PycharmProjects\OzonImportBq\main.py", line 115, in main
+    items=ozon_method.ozon_import(method,apimethods.get(method), apikey,LOG_FILE,clientid,dateimport,ozonid)
+  File "C:\Users\mryzhov\PycharmProjects\OzonImportBq\ozon_method.py", line 12, in ozon_import
+    items = query(apimethods, logers, apikey, clientid,method,ozonid,dateimport)
+  File "C:\Users\mryzhov\PycharmProjects\OzonImportBq\ozon_method.py", line 20, in query
+    data,querycount = makedata(page, querycount,method,dateimport)
+  File "C:\Users\mryzhov\PycharmProjects\OzonImportBq\ozon_method.py", line 91, in makedata
+    return data,querycount
+UnboundLocalError: local variable 'data' referenced before assignment
+2021-09-25 10:51:25,432 | __main__ | INFO | Начало импорта из OZON ip_bog:
+2021-09-25 10:51:25,433 | __main__ | INFO | Чистим  данные в transv32021 c 2020-09-25
+2021-09-25 10:51:25,434 | __main__ | INFO | Загружаем данные с:2020-09-25
+2021-09-25 10:51:57,766 | __main__ | ERROR | Ошибка выполнения.'str' object does not support item assignment
+Traceback (most recent call last):
+  File "C:\Users\mryzhov\PycharmProjects\OzonImportBq\main.py", line 115, in main
+    items=ozon_method.ozon_import(method,apimethods.get(method), apikey,LOG_FILE,clientid,dateimport,ozonid)
+  File "C:\Users\mryzhov\PycharmProjects\OzonImportBq\ozon_method.py", line 12, in ozon_import
+    items = query(apimethods, logers, apikey, clientid,method,ozonid,dateimport)
+  File "C:\Users\mryzhov\PycharmProjects\OzonImportBq\ozon_method.py", line 60, in query
+    el['ozon_id'] = ozon_id
+TypeError: 'str' object does not support item assignment
+2021-09-25 10:53:10,219 | __main__ | INFO | Начало импорта из OZON ip_bog:
+2021-09-25 10:53:13,035 | __main__ | INFO | Чистим  данные в transv32021 c 2020-09-25
+2021-09-25 10:53:13,036 | __main__ | INFO | Загружаем данные с:2020-09-25
+2021-09-25 11:02:03,578 | __main__ | INFO | Начало импорта из OZON ip_bog:
+2021-09-25 11:02:03,582 | __main__ | INFO | Чистим  данные в transv32021 c 2020-09-25
+2021-09-25 11:02:03,582 | __main__ | INFO | Загружаем данные с:2020-09-25
+2021-09-25 11:10:35,577 | __main__ | INFO | Начало импорта из OZON ip_bog:
+2021-09-25 11:10:35,581 | __main__ | INFO | Чистим  данные в transv32021 c 2020-09-25
+2021-09-25 11:10:35,581 | __main__ | INFO | Загружаем данные с:2020-09-25
+2021-09-25 11:19:37,831 | bq_method | INFO | Starting uploading data. Record count 8716
+2021-09-25 11:19:41,430 | bq_method | INFO | Starting job a1ae6a7b-599a-4c21-ad55-4c00a3763b31
+2021-09-25 11:19:41,431 | bq_method | INFO | Loading data into the BQ table transv32021
+2021-09-25 11:48:04,515 | __main__ | INFO | Начало импорта из OZON ip_bog:
+2021-09-25 11:48:04,516 | __main__ | INFO | Чистим  данные в orders2021 c 2020-09-25
+2021-09-25 11:48:06,933 | __main__ | INFO | Загружаем данные с:2020-09-25
+2021-09-25 11:50:20,233 | bq_method | INFO | Starting uploading data. Record count 9046
+2021-09-25 11:50:22,652 | bq_method | INFO | Starting job c4cff17c-57f6-4bc3-981e-3db927dd66d7
+2021-09-25 11:50:22,653 | bq_method | INFO | Loading data into the BQ table orders2021
+2021-09-25 11:50:48,387 | __main__ | INFO | Начало импорта из OZON ip_bog:
+2021-09-25 11:50:48,392 | __main__ | INFO | Чистим  данные в orders2021 c 2020-09-25
+2021-09-25 11:50:51,887 | __main__ | INFO | Загружаем данные с:2020-09-25
+2021-09-25 12:03:19,939 | __main__ | INFO | Начало импорта из OZON ip_bog:
+2021-09-25 12:03:19,943 | __main__ | INFO | Чистим  данные в orders2021 c 2020-09-25
+2021-09-25 12:03:22,463 | __main__ | INFO | Загружаем данные с:2020-09-25
+2021-09-25 12:49:39,014 | bq_method | INFO | Starting uploading data. Record count 9046
+2021-09-25 12:49:44,236 | bq_method | INFO | Starting job de9c2066-c156-4a28-b822-ee6808973bdf
+2021-09-25 12:49:44,237 | bq_method | INFO | Loading data into the BQ table orders2021
+2021-09-25 12:49:47,452 | __main__ | ERROR | Ошибка выполнения.400 Provided Schema does not match Table polar-plate-276717:OZON.orders2021. Field analytics_data has changed type from STRING to RECORD
+Traceback (most recent call last):
+  File "C:/Users/mryzhov/PycharmProjects/OzonImportBq/main.py", line 116, in main
+    bq_method.export_js_to_bq(items, tablebq,jsonkey,datasetid,LOG_FILE)
+  File "C:\Users\mryzhov\PycharmProjects\OzonImportBq\bq_method.py", line 33, in export_js_to_bq
+    job.result()  # Waits for table load to complete.
+  File "C:\Users\mryzhov\PycharmProjects\OzonImportBq\venv\lib\site-packages\google\cloud\bigquery\job.py", line 812, in result
+    return super(_AsyncJob, self).result(timeout=timeout)
+  File "C:\Users\mryzhov\PycharmProjects\OzonImportBq\venv\lib\site-packages\google\api_core\future\polling.py", line 130, in result
+    raise self._exception
+google.api_core.exceptions.BadRequest: 400 Provided Schema does not match Table polar-plate-276717:OZON.orders2021. Field analytics_data has changed type from STRING to RECORD
+2021-09-25 13:17:29,580 | __main__ | INFO | Начало импорта из OZON ip_bog:
+2021-09-25 13:17:29,581 | __main__ | INFO | Чистим  данные в orders2021 c 2020-09-25
+2021-09-25 13:17:30,348 | __main__ | INFO | Загружаем данные с:2020-09-25
+2021-09-25 13:23:02,762 | bq_method | INFO | Starting uploading data. Record count 9207
+2021-09-25 13:23:05,908 | bq_method | INFO | Starting job 4c84e449-a0ec-46b2-835b-8fc67bcfe253
+2021-09-25 13:23:05,908 | bq_method | INFO | Loading data into the BQ table orders2021
+2021-09-25 14:06:49,843 | __main__ | INFO | Начало импорта из OZON ip_sam:
+2021-09-25 14:06:49,844 | __main__ | INFO | Чистим  данные в orders2021 c 2020-09-25
+2021-09-25 14:06:52,126 | __main__ | INFO | Загружаем данные с:2020-09-25
+2021-09-25 14:06:54,289 | bq_method | INFO | Starting uploading data. Record count 55
+2021-09-25 14:06:55,738 | bq_method | INFO | Starting job 806f927d-1cb7-4d88-8b05-6f64023e1fd2
+2021-09-25 14:06:55,739 | bq_method | INFO | Loading data into the BQ table orders2021
+2021-09-25 14:06:56,033 | __main__ | ERROR | Ошибка выполнения.400 Provided Schema does not match Table polar-plate-276717:OZON.orders2021. Field old_price has changed type from FLOAT to INTEGER
+Traceback (most recent call last):
+  File "C:\Users\mryzhov\PycharmProjects\OzonImportBq\main.py", line 116, in main
+    bq_method.export_js_to_bq(items, tablebq,jsonkey,datasetid,LOG_FILE)
+  File "C:\Users\mryzhov\PycharmProjects\OzonImportBq\bq_method.py", line 33, in export_js_to_bq
+    job.result()  # Waits for table load to complete.
+  File "C:\Users\mryzhov\PycharmProjects\OzonImportBq\venv\lib\site-packages\google\cloud\bigquery\job.py", line 812, in result
+    return super(_AsyncJob, self).result(timeout=timeout)
+  File "C:\Users\mryzhov\PycharmProjects\OzonImportBq\venv\lib\site-packages\google\api_core\future\polling.py", line 130, in result
+    raise self._exception
+google.api_core.exceptions.BadRequest: 400 Provided Schema does not match Table polar-plate-276717:OZON.orders2021. Field old_price has changed type from FLOAT to INTEGER
+2021-09-25 14:13:47,304 | __main__ | INFO | Начало импорта из OZON ip_sam:
+2021-09-25 14:13:47,308 | __main__ | INFO | Чистим  данные в orders2021 c 2020-09-25
+2021-09-25 14:13:49,996 | __main__ | INFO | Загружаем данные с:2020-09-25
+2021-09-25 14:14:44,153 | bq_method | INFO | Starting uploading data. Record count 55
+2021-09-25 14:14:45,446 | bq_method | INFO | Starting job cbb3ace9-ea80-44d9-b35d-32c19ffe3a34
+2021-09-25 14:14:45,447 | bq_method | INFO | Loading data into the BQ table orders2021
+2021-09-25 14:14:45,592 | __main__ | ERROR | Ошибка выполнения.400 Provided Schema does not match Table polar-plate-276717:OZON.orders2021. Field total_discount_value has changed type from FLOAT to INTEGER
+Traceback (most recent call last):
+  File "C:/Users/mryzhov/PycharmProjects/OzonImportBq/main.py", line 116, in main
+    bq_method.export_js_to_bq(items, tablebq,jsonkey,datasetid,LOG_FILE)
+  File "C:\Users\mryzhov\PycharmProjects\OzonImportBq\bq_method.py", line 33, in export_js_to_bq
+    job.result()  # Waits for table load to complete.
+  File "C:\Users\mryzhov\PycharmProjects\OzonImportBq\venv\lib\site-packages\google\cloud\bigquery\job.py", line 812, in result
+    return super(_AsyncJob, self).result(timeout=timeout)
+  File "C:\Users\mryzhov\PycharmProjects\OzonImportBq\venv\lib\site-packages\google\api_core\future\polling.py", line 130, in result
+    raise self._exception
+google.api_core.exceptions.BadRequest: 400 Provided Schema does not match Table polar-plate-276717:OZON.orders2021. Field total_discount_value has changed type from FLOAT to INTEGER
+2021-09-25 14:16:03,138 | __main__ | INFO | Начало импорта из OZON ip_sam:
+2021-09-25 14:16:03,139 | __main__ | INFO | Чистим  данные в orders2021 c 2020-09-25
+2021-09-25 14:16:05,476 | __main__ | INFO | Загружаем данные с:2020-09-25
+2021-09-25 14:16:07,329 | bq_method | INFO | Starting uploading data. Record count 55
+2021-09-25 14:16:08,638 | bq_method | INFO | Starting job b957beaa-5c14-4f9c-b68a-9b067594f621
+2021-09-25 14:16:08,638 | bq_method | INFO | Loading data into the BQ table orders2021
+2021-09-25 14:16:21,474 | __main__ | INFO | Начало импорта из OZON ip_kuz:
+2021-09-25 14:16:21,475 | __main__ | INFO | Чистим  данные в orders2021 c 2020-09-25
+2021-09-25 14:16:24,505 | __main__ | INFO | Загружаем данные с:2020-09-25
+2021-09-25 14:20:46,537 | bq_method | INFO | Starting uploading data. Record count 5579
+2021-09-25 14:20:48,936 | bq_method | INFO | Starting job 9ed67fb4-098d-454f-95f4-be60cab7e4ec
+2021-09-25 14:20:48,936 | bq_method | INFO | Loading data into the BQ table orders2021
+2021-09-25 15:17:34,200 | __main__ | INFO | Начало импорта из OZON ip_kuz:
+2021-09-25 15:17:34,200 | __main__ | INFO | Чистим  данные в fbo_orders2021 c 2020-09-25
+2021-09-25 15:17:34,201 | __main__ | INFO | Загружаем данные с:2020-09-25
+2021-09-25 15:17:34,203 | __main__ | ERROR | Ошибка выполнения.local variable 'data' referenced before assignment
+Traceback (most recent call last):
+  File "C:\Users\mryzhov\PycharmProjects\OzonImportBq\main.py", line 116, in main
+    items=ozon_method.ozon_import(method,apimethods.get(method), apikey,LOG_FILE,clientid,dateimport,ozonid)
+  File "C:\Users\mryzhov\PycharmProjects\OzonImportBq\ozon_method.py", line 12, in ozon_import
+    items = query(apimethods, logers, apikey, clientid,method,ozonid,dateimport)
+  File "C:\Users\mryzhov\PycharmProjects\OzonImportBq\ozon_method.py", line 20, in query
+    data,querycount = makedata(page, querycount,method,dateimport)
+  File "C:\Users\mryzhov\PycharmProjects\OzonImportBq\ozon_method.py", line 98, in makedata
+    return data,querycount
+UnboundLocalError: local variable 'data' referenced before assignment
+2021-09-25 15:19:25,244 | __main__ | INFO | Начало импорта из OZON ip_kuz:
+2021-09-25 15:19:25,245 | __main__ | INFO | Чистим  данные в fbo_orders2021 c 2020-09-25
+2021-09-25 15:19:26,170 | __main__ | INFO | Загружаем данные с:2020-09-25
+2021-09-25 15:23:00,277 | bq_method | INFO | Starting uploading data. Record count 5579
+2021-09-25 15:23:02,794 | bq_method | INFO | Starting job 70b4b0c1-8f3c-4353-b7f8-77b28e1b662f
+2021-09-25 15:23:02,794 | bq_method | INFO | Loading data into the BQ table fbo_orders2021
+2021-09-25 16:29:31,937 | __main__ | INFO | Начало импорта из OZON ip_kuz:
+2021-09-25 16:29:31,941 | __main__ | INFO | Чистим  данные в fbo_orders2021 c 2020-09-25
+2021-09-25 16:29:34,397 | __main__ | INFO | Загружаем данные с:2020-09-25
+2021-09-25 16:33:11,660 | __main__ | INFO | Начало импорта из OZON ip_kuz:
+2021-09-25 16:33:11,664 | __main__ | INFO | Чистим  данные в fbo_orders2021 c 2020-09-25
+2021-09-25 16:33:14,196 | __main__ | INFO | Загружаем данные с:2020-09-25
+2021-09-25 16:44:10,499 | bq_method | INFO | Starting uploading data. Record count 5579
+2021-09-25 16:44:13,294 | bq_method | INFO | Starting job 9a6dcad0-d3e0-402d-84df-37f9bdce7bec
+2021-09-25 16:44:13,295 | bq_method | INFO | Loading data into the BQ table fbo_orders2021
+2021-09-25 16:46:35,972 | __main__ | INFO | Начало импорта из OZON ip_kuz:
+2021-09-25 16:46:35,975 | __main__ | INFO | Чистим  данные в fbo_orders2021 c 2021-08-25
+2021-09-25 16:46:38,372 | __main__ | INFO | Загружаем данные с:2021-08-25
+2021-09-25 16:52:21,106 | __main__ | INFO | Начало импорта из OZON ip_kuz:
+2021-09-25 16:52:21,107 | __main__ | INFO | Чистим  данные в fbo_orders2021 c 2020-09-25
+2021-09-25 16:52:21,704 | __main__ | INFO | Загружаем данные с:2020-09-25
+2021-09-25 16:56:38,455 | __main__ | ERROR | Ошибка выполнения.'barcodes'
+Traceback (most recent call last):
+  File "C:\Users\mryzhov\PycharmProjects\OzonImportBq\main.py", line 116, in main
+    items=ozon_method.ozon_import(method,apimethods.get(method), apikey,LOG_FILE,clientid,dateimport,ozonid)
+  File "C:\Users\mryzhov\PycharmProjects\OzonImportBq\ozon_method.py", line 12, in ozon_import
+    items = query(apimethods, logers, apikey, clientid,method,ozonid,dateimport)
+  File "C:\Users\mryzhov\PycharmProjects\OzonImportBq\ozon_method.py", line 42, in query
+    newdict = el|element_product_financial|el['financial_data']['posting_services']|el['barcodes']|el['analytics_data']
+KeyError: 'barcodes'
+2021-09-25 18:05:05,247 | __main__ | INFO | Начало импорта из OZON ip_kuz:
+2021-09-25 18:05:05,247 | __main__ | INFO | Чистим  данные в fbo_orders2021 c 2020-09-25
+2021-09-25 18:05:05,809 | __main__ | INFO | Загружаем данные с:2020-09-25
+2021-09-25 18:09:08,310 | bq_method | INFO | Starting uploading data. Record count 5522
+2021-09-25 18:09:11,293 | bq_method | INFO | Starting job 0c2dbded-ed7d-4445-894b-73b692f228f5
+2021-09-25 18:09:11,293 | bq_method | INFO | Loading data into the BQ table fbo_orders2021
