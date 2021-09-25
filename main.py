@@ -81,6 +81,7 @@ def main(apikey,jsonkey,method,datasetid,logdir,ozonid,bufferuploadmonth,clienti
                   'transactionv3': 'https://api-seller.ozon.ru/v3/finance/transaction/list',
                   'stock': 'https://api-seller.ozon.ru/v1/product/info/stocks',
                   'orders': 'https://api-seller.ozon.ru/v2/posting/fbs/list',
+                  'fbo_orders': 'https://api-seller.ozon.ru/v2/posting/fbo/list',
                   'price': 'https://api-seller.ozon.ru/v1/product/info/prices'}
     #datenow = datetime.datetime.now()
     #two_day = datetime.timedelta(2)  # два дня
@@ -96,7 +97,7 @@ def main(apikey,jsonkey,method,datasetid,logdir,ozonid,bufferuploadmonth,clienti
         tablebq=method
     loger.info(f'Чистим  данные в {tablebq} c {dateimport}')
 
-    if method == 'orders':
+    if method == 'orders' or method == 'fbo_orders' :
         fieldname = 'created_at'
         deleteresult=bq_method.DeleteOldReport(dateimport, datasetid, jsonkey, fieldname, tablebq,ozonid)
         #bq_method.DeleteTable(method, datasetid, jsonkey)

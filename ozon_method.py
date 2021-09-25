@@ -33,13 +33,15 @@ def query(apiuri, logers, apikey,clientid,method,ozon_id,dateimport):
             items = datablock_from_js(js, method)
             #дополним последующими записями
             itemstotal = itemstotal + items
-    if method=='orders':
+    if method=='orders' or method == 'fbo_orders':
         newlist = []
         for el in itemstotal:
             if el.__contains__('financial_data')\
                     and type(el['financial_data']) is dict: #проверим наличие финансового блока
                 for element_product_financial in el['financial_data']['products']: #пробежимся по тч товаров из финансового блока
-                    newdict = el|element_product_financial|el['financial_data']['posting_services']|el['barcodes']|el['analytics_data']
+                    newdict = el|element_product_financial|el['financial_data']['posting_services']|el['analytics_data']
+                    if el.__contains__('barcodes'):
+                        newdict=newdict| el['barcodes']
                     newdict['ozon_id'] = ozon_id
                     newdict['dateExport'] = datetime.datetime.today().isoformat()
                     for key, value in list(newdict.items()):
@@ -89,7 +91,7 @@ def makedata(page, querycount,method,dateimport):
         data = f'{{"filter": {{"date": {{"from": "{dateimportstr}","to": "{datenowstr}"}},' \
                 f'"transaction_type": "all"}}'\
                 f',"page": {page},"page_size": {querycount}}}'
-    elif method == 'orders':
+    elif method == 'orders' or method == 'fbo_orders':
         querycount=50
         ofset=(page-1)*querycount
         #data =  f'{{"dir": "asc","filter": {{"since": "2020-08-01T00:00:00.999Z","to": "2020-12-31T23:59:59.999Z"}},'\
