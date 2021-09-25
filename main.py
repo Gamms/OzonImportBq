@@ -93,6 +93,7 @@ def main(apikey,jsonkey,method,datasetid,logdir,ozonid,bufferuploadmonth,clienti
     dateimport = datetime.date.today() - dateutils.relativedelta(months=bufferuploadmonth)
     if tablebq=="":
         tablebq=method
+    loger.info(f'Чистим  данные в {tablebq} c {dateimport}')
 
     if method == 'orders':
         fieldname = 'created_at'
@@ -106,7 +107,7 @@ def main(apikey,jsonkey,method,datasetid,logdir,ozonid,bufferuploadmonth,clienti
 
 
     #dateimport = datetime.date.today() - datetime.timedelta(days=30)  # общий буфер 30 дней
-
+    loger.info(f'Загружаем данные с:{dateimport}')
     try:
     #   js=ozon_method.ozon_import(apimethods.get(method),apikey,LOG_FILE,dateimport,maxdatechange)
         #clientid='44346'
