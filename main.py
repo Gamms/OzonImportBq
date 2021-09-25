@@ -75,9 +75,10 @@ def main(apikey,jsonkey,method,datasetid,logdir,ozonid,bufferuploadmonth,clienti
     LOG_FILE=logdir+"ozon_bq.log"
     loger=log.get_logger(__name__,LOG_FILE)
     #logging.basicConfig(filename=logdir+"wb_bq.log", level=logging.INFO, format='%(process)d|%(levelname)s|%(asctime)s|%(message)s')
-    loger.info('Начало импорта из OZON:')
+    loger.info(f'Начало импорта из OZON {ozonid}:')
     #keyb64: str = 'YjAxOTkxOTMtZThjMC00NTM3LTk1M2EtMzM1OTFlOGM3NzQ3'
     apimethods = {'transaction': 'https://api-seller.ozon.ru/v2/finance/transaction/list',
+                  'transactionv3': 'https://api-seller.ozon.ru/v3/finance/transaction/list',
                   'stock': 'https://api-seller.ozon.ru/v1/product/info/stocks',
                   'orders': 'https://api-seller.ozon.ru/v2/posting/fbs/list',
                   'price': 'https://api-seller.ozon.ru/v1/product/info/prices'}

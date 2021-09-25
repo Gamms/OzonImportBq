@@ -24,7 +24,8 @@ def query(apiuri, logers, apikey,clientid,method,ozon_id,dateimport):
     # фильтруем то что уже есть
     if method=='stock' or method=='price':
         items = js['result']['items']
-
+    if method=='transactionv3':
+        items =js['result']['operations']
     else:
         items=js['result']
     itemstotal=items
@@ -76,7 +77,7 @@ def makedata(page, querycount,method,dateimport):
     datenowstr=datetime.datetime.now().strftime("%Y-%m-%dT%H:%M:%S.999Z")
     if method == 'stock' or method=='price':
         data = f'{{"page": {page},"page_size": {querycount}}}'
-    elif method == 'transaction':
+    elif method == 'transaction' or method == 'transactionv3' :
         #data =  f'{{"filter": {{"date": {{"from": "2020-01-01T00:00:00.999Z","to": "2020-12-31T23:59:59.999Z"}},'\
         data = f'{{"filter": {{"date": {{"from": "{dateimportstr}","to": "{datenowstr}"}},' \
                 f'"transaction_type": "all"}}'\
