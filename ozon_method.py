@@ -34,6 +34,11 @@ def query(apiuri, logers, apikey,clientid,method,ozon_id,dateimport):
             #дополним последующими записями
             itemstotal = itemstotal + items
     if method=='orders' or method == 'fbo_orders':
+        apiurlproduct = 'https://api-seller.ozon.ru/v1/product/list'#озон не отдает артикулы сразу, нужен доп запрос
+        resproduct = make_query('post', apiurlproduct, data, headers, logers)
+        jsproduct = json.loads(resproduct.text)
+        itemsproduct=jsproduct['result']['items']
+        products = {item['product_id']: item['offer_id'] for item in itemsproduct}
         newlist = []
         for el in itemstotal:
             if el.__contains__('financial_data')\
@@ -52,6 +57,10 @@ def query(apiuri, logers, apikey,clientid,method,ozon_id,dateimport):
 
                     if newdict.__contains__('old_price') and type(newdict['old_price']) is not float:
                         newdict['old_price'] = parse_float(newdict['old_price'])
+                    if products.__contains__(newdict['product_id']):
+                        newdict['offer_id']=products[newdict['product_id']]
+                    else:
+                        newdict['offer_id'] ='not found'
                     newlist.append(newdict)
 
         itemstotal=newlist
