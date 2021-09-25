@@ -14,6 +14,11 @@ def ozon_import(method,apimethods, apikey,LOG_FILE,clientid,dateimport,ozonid):
     return items
 
 
+def checkTypeField(newdict, elfield):
+    if newdict.__contains__(elfield) and type(newdict[elfield]) is not float:
+        newdict[elfield] = parse_float(newdict[elfield])
+
+
 def query(apiuri, logers, apikey,clientid,method,ozon_id,dateimport):
     page = 1
     querycount = 1000
@@ -34,11 +39,11 @@ def query(apiuri, logers, apikey,clientid,method,ozon_id,dateimport):
             #дополним последующими записями
             itemstotal = itemstotal + items
     if method=='orders' or method == 'fbo_orders':
-        apiurlproduct = 'https://api-seller.ozon.ru/v1/product/list'#озон не отдает артикулы сразу, нужен доп запрос
-        resproduct = make_query('post', apiurlproduct, data, headers, logers)
-        jsproduct = json.loads(resproduct.text)
-        itemsproduct=jsproduct['result']['items']
-        products = {item['product_id']: item['offer_id'] for item in itemsproduct}
+        #apiurlproduct = 'https://api-seller.ozon.ru/v1/product/list'#озон не отдает артикулы сразу, нужен доп запрос
+        #resproduct = make_query('post', apiurlproduct, data, headers, logers)
+        #jsproduct = json.loads(resproduct.text)
+        #itemsproduct=jsproduct['result']['items']
+        #products = {item['product_id']: item['offer_id'] for item in itemsproduct}
         newlist = []
         for el in itemstotal:
             if el.__contains__('financial_data')\
@@ -49,18 +54,19 @@ def query(apiuri, logers, apikey,clientid,method,ozon_id,dateimport):
                         newdict=newdict| el['barcodes']
                     newdict['ozon_id'] = ozon_id
                     newdict['dateExport'] = datetime.datetime.today().isoformat()
-                    for key, value in list(newdict.items()):
+                    for elfield in ['total_discount_value','old_price']:
+                        checkTypeField(newdict,elfield)
+
+                    for product in el['products']:
+                        if product['sku']==newdict['product_id']:
+                            newdict['offer_id']=product['offer_id']
+                            newdict['offer_name'] = product['name']
+                            break
+
+                    for key, value in list(newdict.items()):#удалим ненужные элементы
                         if type(value) is list or type(value) is dict:
                             del newdict[key]
-                    if newdict.__contains__('total_discount_value') and type(newdict['total_discount_value']) is not float:
-                        newdict['total_discount_value'] = parse_float(newdict['total_discount_value'])
 
-                    if newdict.__contains__('old_price') and type(newdict['old_price']) is not float:
-                        newdict['old_price'] = parse_float(newdict['old_price'])
-                    if products.__contains__(newdict['product_id']):
-                        newdict['offer_id']=products[newdict['product_id']]
-                    else:
-                        newdict['offer_id'] ='not found'
                     newlist.append(newdict)
 
         itemstotal=newlist
