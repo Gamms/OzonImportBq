@@ -22,12 +22,7 @@ def query(apiuri, logers, apikey,clientid,method,ozon_id,dateimport):
     res = make_query('post', apiuri, data, headers, logers)
     js = json.loads(res.text)
     # фильтруем то что уже есть
-    if method=='stock' or method=='price':
-        items = js['result']['items']
-    if method=='transactionv3':
-        items =js['result']['operations']
-    else:
-        items=js['result']
+    items = datablock_from_js(js, method)
     itemstotal=items
     while len(items) == querycount:
         # количество записей видимо больше запросим следующую страниц
@@ -35,26 +30,28 @@ def query(apiuri, logers, apikey,clientid,method,ozon_id,dateimport):
             data,querycount = makedata(page, querycount,method,dateimport)
             res = make_query('post', apiuri, data, headers, logers)
             js = json.loads(res.text)
-            if method=='stock' or method=='price':
-                items = js['result']['items']
-            else:
-                items = js['result']
+            items = datablock_from_js(js, method)
             #дополним последующими записями
             itemstotal = itemstotal + items
     if method=='orders':
         newlist = []
         for el in itemstotal:
-            newdict={}
-            newdict['ozon_id'] = ozon_id
-            newdict['dateExport'] = datetime.datetime.today().isoformat()
-            for eldict in el:
-                if type(el[eldict]) is list:
-                    for ellist in el[eldict]: #цикл по строкам
-                        for rekellist in ellist: #цикл по реквизитам строки
-                            newdict[rekellist] = ellist[rekellist]
-                else:
-                    newdict[eldict]=el[eldict]
-            newlist.append(newdict)
+            if el.__contains__('financial_data')\
+                    and type(el['financial_data']) is dict: #проверим наличие финансового блока
+                for element_product_financial in el['financial_data']['products']: #пробежимся по тч товаров из финансового блока
+                    newdict = el|element_product_financial|el['financial_data']['posting_services']|el['barcodes']|el['analytics_data']
+                    newdict['ozon_id'] = ozon_id
+                    newdict['dateExport'] = datetime.datetime.today().isoformat()
+                    for key, value in list(newdict.items()):
+                        if type(value) is list or type(value) is dict:
+                            del newdict[key]
+                    if newdict.__contains__('total_discount_value') and type(newdict['total_discount_value']) is not float:
+                        newdict['total_discount_value'] = parse_float(newdict['total_discount_value'])
+
+                    if newdict.__contains__('old_price') and type(newdict['old_price']) is not float:
+                        newdict['old_price'] = parse_float(newdict['old_price'])
+                    newlist.append(newdict)
+
         itemstotal=newlist
     else:
         for el in itemstotal:
@@ -72,6 +69,16 @@ def query(apiuri, logers, apikey,clientid,method,ozon_id,dateimport):
     return itemstotal
 
 
+def datablock_from_js(js, method):
+    if method == 'stock' or method == 'price':
+        items = js['result']['items']
+    if method == 'transactionv3':
+        items = js['result']['operations']
+    else:
+        items = js['result']
+    return items
+
+
 def makedata(page, querycount,method,dateimport):
     dateimportstr=dateimport.strftime("%Y-%m-%dT%H:%M:%S.000Z")
     datenowstr=datetime.datetime.now().strftime("%Y-%m-%dT%H:%M:%S.999Z")
@@ -87,8 +94,7 @@ def makedata(page, querycount,method,dateimport):
         ofset=(page-1)*querycount
         #data =  f'{{"dir": "asc","filter": {{"since": "2020-08-01T00:00:00.999Z","to": "2020-12-31T23:59:59.999Z"}},'\
         data = f'{{"dir": "asc","filter": {{"since": "{dateimportstr}","to": "{datenowstr}"}},' \
-                f'"offset": {ofset},"limit": {querycount},"with": {{"barcodes":true}}}}'
-
+                f'"offset": {ofset},"limit": {querycount},"with": {{"barcodes":true,"financial_data": true,"analytics_data": true}}}}'
     return data,querycount
 
 
@@ -117,6 +123,20 @@ def make_query(method,uri,data,headers,logers):
     return result
 
 
+def parse_int(s):
+    try:
+        res = int(eval(str(s)))
+        if type(res) == int:
+            return res
+    except:
+        return 0
 
+def parse_float(s):
+    try:
+        res = float(eval(str(s)))
+        if type(res) == float:
+            return res
+    except:
+        return 0.0
 
 
