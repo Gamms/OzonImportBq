@@ -416,3 +416,10 @@ UnboundLocalError: local variable 'data' referenced before assignment
 2021-09-21 17:23:16,071 | bq_method | INFO | Starting job e63938e6-ed9a-47d8-b7b5-5b4db9523afd
 2021-09-21 17:23:16,072 | bq_method | INFO | Loading data into the BQ table orders2021
 2021-09-21 17:23:33,212 | __main__ | INFO | Начало импорта из OZON:
+2021-09-21 17:25:39,112 | bq_method | INFO | Starting uploading data. Record count 8658
+2021-09-21 17:25:41,505 | bq_method | INFO | Starting job 856d3b7c-ff9f-4df0-8a4b-060c0e6617f3
+2021-09-21 17:25:41,505 | bq_method | INFO | Loading data into the BQ table orders2021
+2021-09-21 17:47:50,937 | __main__ | INFO | Начало импорта из OZON:
+2021-09-21 17:49:33,063 | bq_method | INFO | Starting uploading data. Record count 5389
+2021-09-21 17:49:35,220 | bq_method | INFO | Starting job 968a1dc9-1832-4848-a1e9-776d55f63a65
+2021-09-21 17:49:35,221 | bq_method | INFO | Loading data into the BQ table orders2021
