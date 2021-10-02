@@ -1,0 +1,12 @@
+/venv/
+/venv39/
+/venvback/
+/venvold/
+/build/
+config.py
+/dist/
+/log/
+polar.json
+/_pycache_/
+/__pycache__/
+/.idea/
