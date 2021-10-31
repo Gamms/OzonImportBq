@@ -3,8 +3,6 @@ import json
 import datetime
 import time
 import log
-from dateutil import parser
-import pytz
 timeout = 60  # таймаут 60 секунд
 def ozon_import(method,apimethods, apikey,LOG_FILE,clientid,dateimport,ozonid):
     #делаем 5 попыток с паузой 1 минута, если не вышло пропускаем
