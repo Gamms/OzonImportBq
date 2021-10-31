@@ -49,7 +49,15 @@ def query(apiuri, logers, apikey,clientid,method,ozon_id,dateimport):
             if el.__contains__('financial_data')\
                     and type(el['financial_data']) is dict: #проверим наличие финансового блока
                 for element_product_financial in el['financial_data']['products']: #пробежимся по тч товаров из финансового блока
-                    newdict = el|element_product_financial|el['financial_data']['posting_services']|el['analytics_data']
+                    postingservice=el['financial_data']['posting_services']
+                    analiticsdata=el['analytics_data']
+                    newdict = el|element_product_financial|postingservice
+                    if not postingservice is None:
+                        newdict=newdict|postingservice
+                    if not analiticsdata is None:
+
+                        newdict = newdict |analiticsdata
+
                     if el.__contains__('barcodes'):
                         newdict=newdict| el['barcodes']
                     newdict['ozon_id'] = ozon_id
@@ -64,7 +72,7 @@ def query(apiuri, logers, apikey,clientid,method,ozon_id,dateimport):
                             break
 
                     for key, value in list(newdict.items()):#удалим ненужные элементы
-                        if type(value) is list or type(value) is dict:
+                        if type(value) is list or type(value) is dict or key=='analytics_data':
                             del newdict[key]
 
                     newlist.append(newdict)
@@ -72,6 +80,9 @@ def query(apiuri, logers, apikey,clientid,method,ozon_id,dateimport):
         itemstotal=newlist
     else:
         for el in itemstotal:
+
+            for elfield in ['order_amount']:
+                checkTypeField(el, elfield)
             el['ozon_id'] = ozon_id
             el['dateExport'] = datetime.datetime.today().isoformat()
             if method == 'price':

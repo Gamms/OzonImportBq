@@ -43,8 +43,8 @@ import json
 )
 
 @click.option(
-    '--bufferuploadmonth', '-bufferuploadmonth',default=12,
-    help='Количество месяцев для загрузки'
+    '--bufferuploadday', '-bufferuploadday',default=5,
+    help='Количество дней для загрузки'
 )
 
 @click.option(
@@ -58,7 +58,7 @@ import json
 
 #@click.option('--delimiter', default=";", help='Delimiter csv.', show_default=True)
 
-def main(apikey,jsonkey,method,datasetid,logdir,ozonid,bufferuploadmonth,clientid,tablebq):
+def main(apikey,jsonkey,method,datasetid,logdir,ozonid,bufferuploadday,clientid,tablebq):
     """
        Утилита коммандной строки для импорта из api OZON в Google BQ
        Для импорта доступны 6 разделов :
@@ -92,18 +92,18 @@ def main(apikey,jsonkey,method,datasetid,logdir,ozonid,bufferuploadmonth,clienti
     #bq_method.CreateDataSet(datasetid,jsonkey)
     #method = 'sales'
 
-    dateimport = datetime.date.today() - dateutils.relativedelta(months=bufferuploadmonth)
+    dateimport = datetime.date.today() - dateutils.relativedelta(days=bufferuploadday)
     if tablebq=="":
         tablebq=method
     loger.info(f'Чистим  данные в {tablebq} c {dateimport}')
 
     if method == 'orders' or method == 'fbo_orders' :
         fieldname = 'created_at'
-        deleteresult=bq_method.DeleteOldReport(dateimport, datasetid, jsonkey, fieldname, tablebq,ozonid)
+        #deleteresult=bq_method.DeleteOldReport(dateimport, datasetid, jsonkey, fieldname, tablebq,ozonid)
         #bq_method.DeleteTable(method, datasetid, jsonkey)
     elif method == 'transaction':
         fieldname = 'tranDate'
-        deleteresult=bq_method.DeleteOldReport(dateimport, datasetid, jsonkey, fieldname, tablebq,ozonid)
+        #deleteresult=bq_method.DeleteOldReport(dateimport, datasetid, jsonkey, fieldname, tablebq,ozonid)
 
 
 
@@ -113,7 +113,17 @@ def main(apikey,jsonkey,method,datasetid,logdir,ozonid,bufferuploadmonth,clienti
     try:
     #   js=ozon_method.ozon_import(apimethods.get(method),apikey,LOG_FILE,dateimport,maxdatechange)
         #clientid='44346'
+
         items=ozon_method.ozon_import(method,apimethods.get(method), apikey,LOG_FILE,clientid,dateimport,ozonid)
+        if len(items)!=0:
+            if method == 'orders' or method == 'fbo_orders':
+                fieldname = 'created_at'
+                deleteresult = bq_method.DeleteOldReport(dateimport, datasetid, jsonkey, fieldname, tablebq, ozonid)
+                # bq_method.DeleteTable(method, datasetid, jsonkey)
+            elif method == 'transaction':
+                fieldname = 'transaction_date'
+                deleteresult = bq_method.DeleteOldReport(dateimport, datasetid, jsonkey, fieldname, tablebq, ozonid)
+
         bq_method.export_js_to_bq(items, tablebq,jsonkey,datasetid,LOG_FILE)
     except Exception as e:
         loger.exception("Ошибка выполнения."+e.__str__())
