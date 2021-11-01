@@ -1,0 +1,23 @@
+methods:
+  - method:
+     ozonmethod: orders
+     bqtable: orders2021
+  - method:
+     ozonmethod: transaction
+     bqtable: trans2021
+  - method:
+     ozonmethod: fbo_orders
+     bqtable: fbo_orders2021
+lks:
+  - lk:
+      apikey: api key ozone
+      clientid: client id ozone
+      bq_id: id to table any str
+  - lk:
+      apikey: api key ozone
+      clientid: client id ozone
+      bq_id: id to table any str
+  - lk:
+      apikey: api key ozone
+      clientid: client id ozone
+      bq_id: id to table any str

@@ -4,6 +4,14 @@ import datetime
 import time
 import log
 timeout = 60  # таймаут 60 секунд
+apimethods = {'transaction': 'https://api-seller.ozon.ru/v2/finance/transaction/list',
+              'transactionv3': 'https://api-seller.ozon.ru/v3/finance/transaction/list',
+              'stock': 'https://api-seller.ozon.ru/v1/product/info/stocks',
+              'orders': 'https://api-seller.ozon.ru/v2/posting/fbs/list',
+              'fbo_orders': 'https://api-seller.ozon.ru/v2/posting/fbo/list',
+              'price': 'https://api-seller.ozon.ru/v1/product/info/prices'}
+
+
 def ozon_import(method,apimethods, apikey,LOG_FILE,clientid,dateimport,ozonid):
     #делаем 5 попыток с паузой 1 минута, если не вышло пропускаем
     logers = log.get_logger(__name__, LOG_FILE)

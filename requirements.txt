@@ -22,3 +22,5 @@ requests==2.23.0
 rsa==4.0
 six==1.16.0
 urllib3==1.25.11
+
+PyYAML~=6.0

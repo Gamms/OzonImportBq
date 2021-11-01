@@ -10,3 +10,5 @@ polar.json
 /_pycache_/
 /__pycache__/
 /.idea/
+/log/
+/config.yml
