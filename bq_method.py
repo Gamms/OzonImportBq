@@ -5,8 +5,6 @@ import log
 import datetime
 import pytz
 def export_js_to_bq(js,tableid,key_path,dataset_id,LOG_FILE):
-    #key_path = 'C:/work/Freelance/bq/q.json'
-    #dataset_id = 'exportwb'
     loger=log.get_logger(__name__,LOG_FILE)
     table_id = tableid
     os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = key_path

@@ -1,5 +1,5 @@
 import click
-import logging
+
 import datetime
 import dateutils
 # мои модули
@@ -7,12 +7,6 @@ import bq_method
 import ozon_method
 import log
 import yaml
-import requests
-import json
-        #return 'Job finished.\n'
-
-        #for el in js:
-        #    print(el)
 
 @click.command()
 @click.option(
@@ -39,8 +33,6 @@ import json
     help='config file yml',default="config.yml"
 )
 
-#'C:/Users/mryzhov/PycharmProjects/OzonImportBq/config.yml'
-#@click.option('--delimiter', default=";", help='Delimiter csv.', show_default=True)
 
 def main(jsonkey,datasetid,logdir,bufferuploadday,configyml):
     """

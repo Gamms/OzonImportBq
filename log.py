@@ -18,6 +18,8 @@ def get_file_handler(LOG_FILE):
 def get_logger(logger_name,LOG_FILE):
     logger = logging.getLogger(logger_name)
     logger.setLevel(logging.DEBUG) # лучше иметь больше логов, чем их нехватку
+    if (logger.hasHandlers()):
+        logger.handlers.clear()
     logger.addHandler(get_console_handler())
     logger.addHandler(get_file_handler(LOG_FILE))
     logger.propagate = False
