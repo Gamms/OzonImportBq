@@ -20,7 +20,7 @@ def ozon_import(method,apimethods, apikey,LOG_FILE,clientid,dateimport,ozonid):
     return items
 
 
-def checkTypeField(newdict, elfield):
+def checkTypeFieldFloat(newdict, elfield):
     if newdict.__contains__(elfield) and type(newdict[elfield]) is not float:
         newdict[elfield] = parse_float(newdict[elfield])
 
@@ -69,7 +69,7 @@ def query(apiuri, logers, apikey,clientid,method,ozon_id,dateimport):
                     newdict['ozon_id'] = ozon_id
                     newdict['dateExport'] = datetime.datetime.today().isoformat()
                     for elfield in ['total_discount_value','old_price']:
-                        checkTypeField(newdict,elfield)
+                        checkTypeFieldFloat(newdict, elfield)
 
                     for product in el['products']:
                         if product['sku']==newdict['product_id']:
@@ -87,8 +87,8 @@ def query(apiuri, logers, apikey,clientid,method,ozon_id,dateimport):
     else:
         for el in itemstotal:
 
-            for elfield in ['order_amount']:
-                checkTypeField(el, elfield)
+            for elfield in ['order_amount','commission_amount']:
+                checkTypeFieldFloat(el, elfield)
             el['ozon_id'] = ozon_id
             el['dateExport'] = datetime.datetime.today().isoformat()
             if method == 'price':
