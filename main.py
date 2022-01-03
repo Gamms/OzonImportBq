@@ -7,7 +7,7 @@ import bq_method
 import ozon_method
 import log
 import yaml
-
+from dateutil import parser
 @click.command()
 @click.option(
     '--jsonkey', '-jsonkey',
@@ -85,6 +85,7 @@ def main(jsonkey,datasetid,logdir,bufferuploadday,configyml):
                     loger.info(f'Чистим  данные в {tablebq} c {dateimport}')
                     if method == 'orders' or method == 'fbo_orders':
                         fieldname = 'created_at'
+                        dateclean=min(items,key=lambda x:parser.parse(x['created_at']).replace(tzinfo=None))
                         deleteresult = bq_method.DeleteOldReport(dateimport, datasetid, jsonkey, fieldname, tablebq, ozonid)
                         # bq_method.DeleteTable(method, datasetid, jsonkey)
                     elif method == 'transaction':

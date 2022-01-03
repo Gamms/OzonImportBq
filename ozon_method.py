@@ -123,12 +123,14 @@ def makedata(page, querycount,method,dateimport):
         data = f'{{"filter": {{"date": {{"from": "{dateimportstr}","to": "{datenowstr}"}},' \
                 f'"transaction_type": "all"}}'\
                 f',"page": {page},"page_size": {querycount}}}'
-    elif method == 'orders' or method == 'fbo_orders':
-        querycount=50
+    elif method == 'orders':
+        querycount=1000
         ofset=(page-1)*querycount
-        #data =  f'{{"dir": "asc","filter": {{"since": "2020-08-01T00:00:00.999Z","to": "2020-12-31T23:59:59.999Z"}},'\
-        data = f'{{"dir": "asc","filter": {{"since": "{dateimportstr}","to": "{datenowstr}"}},' \
-                f'"offset": {ofset},"limit": {querycount},"with": {{"barcodes":true,"financial_data": true,"analytics_data": true}}}}'
+        data = f'{{"dir": "asc","filter": {{"order_created_at":{{"from": "{dateimportstr}","to": "{datenowstr}"}}}},"offset": {ofset},"limit": {querycount},"with": {{"barcodes":true,"financial_data": true,"analytics_data": true}}}}'
+    elif method == 'fbo_orders':
+        querycount=1000
+        ofset=(page-1)*querycount
+        data = f'{{"dir": "asc","filter": {{"since": "{dateimportstr}","to": "{datenowstr}"}},"offset": {ofset},"limit": {querycount},"with": {{"barcodes":true,"financial_data": true,"analytics_data": true}}}}'
     return data,querycount
 
 
